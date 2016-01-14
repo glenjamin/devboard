@@ -1,0 +1,5 @@
+.gitignore
+.npmignore
+test
+*.log
+src

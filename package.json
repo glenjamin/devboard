@@ -2,9 +2,9 @@
   "name": "devcards",
   "version": "0.1.0",
   "description": "An interactive visual REPL, based on the ClojureScript project of the same name",
-  "main": "devcards.js",
+  "main": "dist/devcards.js",
   "scripts": {
-    "test": "mocha"
+    "test": "cd test/app && kotatsu serve -c config.js --index index.html --progress --source-maps --presets es2015,react-hmre --jsx main.jsx"
   },
   "repository": {
     "type": "git",
@@ -15,5 +15,16 @@
   "bugs": {
     "url": "https://github.com/glenjamin/devcards-js/issues"
   },
-  "homepage": "https://github.com/glenjamin/devcards-js#readme"
+  "homepage": "https://github.com/glenjamin/devcards-js#readme",
+  "devDependencies": {
+    "babel-preset-react-hmre": "^1.0.1",
+    "json-loader": "^0.5.4",
+    "kotatsu": "^0.3.3",
+    "react": "^0.14.6",
+    "react-dom": "^0.14.6"
+  },
+  "dependencies": {
+    "commonmark": "^0.24.0",
+    "commonmark-react-renderer": "^2.2.0"
+  }
 }
