@@ -4,6 +4,7 @@
   "description": "An interactive visual REPL, based on the ClojureScript project of the same name",
   "main": "dist/devcards.js",
   "scripts": {
+    "build": "babel src --out-dir dist",
     "test": "cd test/app && kotatsu serve -c config.js --index index.html --progress --source-maps --presets es2015,react-hmre --jsx main.jsx"
   },
   "repository": {
@@ -17,6 +18,9 @@
   },
   "homepage": "https://github.com/glenjamin/devcards-js#readme",
   "devDependencies": {
+    "babel-cli": "^6.4.0",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-react": "^6.3.13",
     "babel-preset-react-hmre": "^1.0.1",
     "json-loader": "^0.5.4",
     "kotatsu": "^0.3.3",
