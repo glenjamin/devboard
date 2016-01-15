@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
+import React from 'react';
 
-export default class Button extends Component {
+var Label = React.createClass({
   render() {
     const {
       children,
@@ -15,4 +15,6 @@ export default class Button extends Component {
       </span>
     );
   }
-}
+});
+
+export default Label;
