@@ -1,4 +1,4 @@
-import devcard from 'devards';
+import devcard from '../';
 import React from 'react';
 import Button from './Button';
 

@@ -1,4 +1,4 @@
-import devcard from 'devcards';
+import devcard from '../';
 import React from 'react';
 import Label from './Label';
 
