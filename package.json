@@ -5,8 +5,7 @@
   "main": "devcards.js",
   "scripts": {
     "test": "mocha",
-    "lint": "eslint --max-warnings 0 .",
-    "travis": "npm run lint && npm run test"
+    "lint": "eslint --max-warnings 0 ."
   },
   "repository": {
     "type": "git",
