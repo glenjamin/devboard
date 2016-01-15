@@ -1,0 +1,25 @@
+{
+  "name": "devcards-js-example",
+  "version": "1.0.0",
+  "description": "Example for devcards",
+  "private": true,
+  "scripts": {
+    "start": "kotatsu serve --index public/index.html --progress --devtool eval-source-map --es2015 main.js",
+    "lint": "eslint --max-warnings 0 ."
+  },
+  "author": "Glen Mailer <glen@stainlessed.co.uk>",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "babel-core": "^6.4.0",
+    "babel-eslint": "^5.0.0-beta6",
+    "babel-preset-react": "^6.3.13",
+    "babel-preset-react-hmre": "^1.0.1",
+    "eslint": "^1.10.3",
+    "eslint-plugin-no-class": "^0.1.0",
+    "eslint-plugin-react": "^3.15.0",
+    "kotatsu": "^0.5.0",
+    "react": "^0.14.6",
+    "react-dom": "^0.14.6"
+  }
+}

@@ -4,7 +4,8 @@
   "description": "An interactive visual REPL, based on the ClojureScript project of the same name",
   "main": "devcards.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "lint": "eslint --max-warnings 0 ."
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,16 @@
   "bugs": {
     "url": "https://github.com/glenjamin/devcards-js/issues"
   },
-  "homepage": "https://github.com/glenjamin/devcards-js#readme"
+  "homepage": "https://github.com/glenjamin/devcards-js#readme",
+  "dependencies": {
+    "commonmark": "^0.24.0",
+    "commonmark-react-renderer": "^2.2.0",
+    "object-assign": "^4.0.1"
+  },
+  "devDependencies": {
+    "eslint": "^1.10.3",
+    "mocha": "^2.3.4",
+    "react": "^0.14.6",
+    "react-dom": "^0.14.6"
+  }
 }
