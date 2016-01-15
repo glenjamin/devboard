@@ -20,7 +20,8 @@
   "homepage": "https://github.com/glenjamin/devcards-js#readme",
   "dependencies": {
     "commonmark": "^0.24.0",
-    "commonmark-react-renderer": "^2.2.0"
+    "commonmark-react-renderer": "^2.2.0",
+    "object-assign": "^4.0.1"
   },
   "devDependencies": {
     "eslint": "^1.10.3",
