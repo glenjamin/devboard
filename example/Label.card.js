@@ -1,6 +1,6 @@
-import devcard from '../../src/devcards';
+import devcard from 'devcards';
 import React from 'react';
-import Label from './Label.jsx';
+import Label from './Label';
 
 devcard(
   'Labels',
