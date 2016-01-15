@@ -4,20 +4,21 @@
   "description": "Example for devcards",
   "private": true,
   "scripts": {
-    "start": "kotatsu serve -c config.js --index index.html --progress --source-maps --jsx main.js"
+    "start": "kotatsu serve --index index.html --progress --source-maps --jsx main.js",
+    "lint": "eslint --max-warnings 0 ."
   },
   "author": "Glen Mailer <glen@stainlessed.co.uk>",
   "license": "MIT",
-  "dependencies": {
-    "babel-preset-react": "^6.3.13",
-    "babel-preset-react-hmre": "^1.0.1",
-    "json-loader": "^0.5.4",
-    "kotatsu": "^0.3.3",
-    "react": "^0.14.6",
-    "react-dom": "^0.14.6"
-  },
+  "dependencies": {},
   "devDependencies": {
     "babel-eslint": "^4.1.6",
-    "eslint-plugin-react": "^3.15.0"
+    "babel-preset-react": "^6.3.13",
+    "babel-preset-react-hmre": "^1.0.1",
+    "eslint": "^1.10.3",
+    "eslint-plugin-no-class": "^0.1.0",
+    "eslint-plugin-react": "^3.15.0",
+    "kotatsu": "^0.4.0",
+    "react": "^0.14.6",
+    "react-dom": "^0.14.6"
   }
 }
