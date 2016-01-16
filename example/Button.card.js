@@ -1,8 +1,10 @@
-import devcard from '../';
+import devcards from '../';
 import React from 'react';
 import Button from './Button';
 
-devcard(
+var defcard = devcards.ns('buttons');
+
+defcard(
   'Buttons',
   `
   A simple display of bootstrap buttons.

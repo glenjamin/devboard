@@ -1,6 +1,6 @@
-var run = require('../').run;
-
 var context = require.context('./', true, /\.card\.js$/);
-run(context.keys(), context);
+context.keys().forEach(function(moduleName) {
+  context(moduleName);
+});
 
 module.hot.accept();
