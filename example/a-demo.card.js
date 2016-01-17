@@ -13,8 +13,7 @@ devcard(
   devcard(name, doc, body);
   \`\`\`
   `,
-  <div>
-    <hr />
+  <div className="alert alert-info">
     <p>
       A body can be <big><strong>all</strong></big> kinds of things,
       this one is made of React elements.
