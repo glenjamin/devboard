@@ -26,14 +26,28 @@ function ns(name) {
 }
 
 function createDefinitionFn(add) {
-  // Main card
-  function devcard(name, doc, body) {
-    add({name: name, doc: doc, body: body});
+
+  // Main Card API
+  // devcard(doc)
+  // devcard(name, doc, body)
+  // devcard(name, doc, body, options)
+  function devcard(name, doc, body, options) {
+    if (arguments.length == 1) {
+      if (typeof arguments[0] == 'string') {
+        doc = arguments[0];
+      } else {
+        body = arguments[0];
+      }
+      name = null;
+    }
+    add({name: name, doc: doc, body: body, options: options});
   }
 
-  // Anonymous card
-  devcard.anon = function devcard_anon(doc, body) {
-    add({name: null, doc: doc, body: body});
+  // Anonymous card API
+  // devcard.anon(doc, body)
+  // devcard.anon(doc, body, options)
+  devcard.anon = function devcard_anon(doc, body, options) {
+    devcard(null, doc, body, options);
   };
 
   // Noop card
