@@ -31,6 +31,11 @@ function createDefinitionFn(add) {
     add({name: name, doc: doc, body: body});
   }
 
+  // Anonymous card
+  devcard.anon = function devcard_anon(doc, body) {
+    add({name: null, doc: doc, body: body});
+  };
+
   // Noop card
   devcard.off = Function.prototype;
 

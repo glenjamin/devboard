@@ -28,3 +28,13 @@ devcard(
     </div>
   )
 );
+
+devcard.anon(
+  `
+  Cards don't have to have names
+  \`\`\`js
+  devcard.anon()
+  \`\`\`
+  `,
+  <Label>a bootstrap label</Label>
+);
