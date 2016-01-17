@@ -2,9 +2,9 @@ import devcards from '../';
 import React from 'react';
 import Label from './Label';
 
-var defcard = devcards.ns('labels');
+var devcard = devcards.ns('labels');
 
-defcard(
+devcard(
   'Labels',
   `
   A simple display of bootstrap labels.

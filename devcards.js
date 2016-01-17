@@ -22,19 +22,19 @@ function ns(name) {
     cards.push(card);
     enqueueRender();
   }
-  return createDefcard(add);
+  return createDefinitionFn(add);
 }
 
-function createDefcard(add) {
+function createDefinitionFn(add) {
   // Main card
-  function defcard(name, doc, body) {
+  function devcard(name, doc, body) {
     add({name: name, doc: doc, body: body});
   }
 
   // Noop card
-  defcard.off = Function.prototype;
+  devcard.off = Function.prototype;
 
-  return defcard;
+  return devcard;
 }
 
 /**
