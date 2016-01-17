@@ -1,6 +1,8 @@
-import devcard from '../';
+import devcards from '../';
 import React from 'react';
 import Label from './Label';
+
+var devcard = devcards.ns('labels');
 
 devcard(
   'Labels',

@@ -5,42 +5,56 @@ var $ = React.createElement;
 
 var DevCards = require('./lib/components/DevCards');
 
-exports = module.exports = devcard;
-exports.run = run;
+var DEVCARDS_DIV_ID = '__devcards-root';
 
-/**
- * Cards
- */
+// Singleton state
+// TODO: eliminate?
+var catalog = {};
 
-// Main card
-function devcard(name, doc, body) {
-  devcard.current.push({name: name, doc: doc, body: body});
+exports.ns = ns;
+function ns(name) {
+  // Because execution of a loaded module is synchronous
+  // we can expect a reloading namespace to be filled
+  // in a single pass of the event loop
+  // therefore we can enqueue a reRender for the next tick
+  var cards = catalog[name] = [];
+  function add(card) {
+    cards.push(card);
+    enqueueRender();
+  }
+  return createDefinitionFn(add);
 }
 
-// Noop card
-devcard.off = Function.prototype;
+function createDefinitionFn(add) {
+  // Main card
+  function devcard(name, doc, body) {
+    add({name: name, doc: doc, body: body});
+  }
 
+  // Noop card
+  devcard.off = Function.prototype;
+
+  return devcard;
+}
 
 /**
- * Runtime
+ * Rendering
  */
-
-// Rendering the cards
-function render(catalog, rootId) {
+function getRoot() {
   /* eslint-env browser */
-  var root = document.getElementById(rootId);
-  ReactDOM.render($(DevCards, { catalog: catalog }), root);
+  var root = document.getElementById(DEVCARDS_DIV_ID);
+  if (root) return root;
+
+  var newRoot = document.createElement('div');
+  newRoot.id = DEVCARDS_DIV_ID;
+  document.body.appendChild(newRoot);
+  return newRoot;
 }
 
-// Running the cards
-function run(modules, require, opts) {
-  opts = opts || {};
-
-  var catalog = {};
-  modules.forEach(function(m) {
-    devcard.current = catalog[m] = [];
-    require(m);
-  });
-
-  render(catalog, opts.rootId || 'DEVCARDS');
+function enqueueRender() {
+  cancelAnimationFrame(enqueueRender.timer);
+  enqueueRender.timer = requestAnimationFrame(render, 0);
+}
+function render() {
+  ReactDOM.render($(DevCards, { catalog: catalog }), getRoot());
 }

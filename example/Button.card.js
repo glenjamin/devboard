@@ -1,6 +1,8 @@
-import devcard from '../';
+import devcards from '../';
 import React from 'react';
 import Button from './Button';
+
+var devcard = devcards.ns('buttons');
 
 devcard(
   'Buttons',
