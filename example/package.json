@@ -4,7 +4,7 @@
   "description": "Example for devcards",
   "private": true,
   "scripts": {
-    "start": "kotatsu serve --public public/ --index public/index.html --progress --devtool \\#eval-source-map --es2015 main.js",
+    "start": "kotatsu serve --public public/ --index public/index.html --progress --devtool \\#eval-source-map --babel main.js",
     "lint": "eslint --max-warnings 0 ."
   },
   "author": "Glen Mailer <glen@stainlessed.co.uk>",
@@ -18,7 +18,7 @@
     "eslint": "^1.10.3",
     "eslint-plugin-no-class": "^0.1.0",
     "eslint-plugin-react": "^3.15.0",
-    "kotatsu": "^0.6.0",
+    "kotatsu": "^0.8.3",
     "react": "^0.14.6",
     "react-dom": "^0.14.6"
   }
