@@ -9,9 +9,9 @@ devcard(
   A simple card comprises a name, then
   [markdown](http://commonmark.org/) documentation,
   followed by a body.
-  \`\`\`js
+  ~~~js
   devcard(name, doc, body);
-  \`\`\`
+  ~~~
   `,
   <div className="alert alert-info">
     <p>
@@ -28,9 +28,9 @@ devcard.anon(
   When they don't have a name, they don't usually display like cards -
   there's no frame.
 
-  \`\`\`js
+  ~~~js
   devcard.anon(doc, body)
-  \`\`\`
+  ~~~
 
   The quote below is the body of this card.
   `,
@@ -42,9 +42,9 @@ devcard.anon(
   If you don't want a name, but you do want the frame -
   you can pass an option to turn it on.
 
-  \`\`\`js
+  ~~~js
   devcard.anon(doc, body, { frame: true })
-  \`\`\`
+  ~~~
   `,
   <blockquote>I feel safer with a fence up!</blockquote>,
   { frame: true }
@@ -56,9 +56,9 @@ devcard(
 
   This card doesn't even have a body!
 
-  \`\`\`js
+  ~~~js
   devcard(doc)
-  \`\`\`
+  ~~~
 
   When there's only one argument, you don't need to use
   \`devcard.anon\`. We'll figure it out.
@@ -69,9 +69,9 @@ devcard(
   `
   You can also have a card which is only a body
 
-  \`\`\`js
+  ~~~js
   devcard(body)
-  \`\`\`
+  ~~~
   `
 );
 
