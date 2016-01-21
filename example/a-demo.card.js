@@ -87,3 +87,12 @@ devcard(
     </li>
   </ul>
 );
+
+devcard(
+  'Alignement',
+  `
+  Cards can also align their body using the \`align\` option.
+  `,
+  <div>I am centered</div>,
+  {align: 'center'}
+);
