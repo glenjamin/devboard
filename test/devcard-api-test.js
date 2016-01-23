@@ -33,6 +33,26 @@ describe('devcard()', function() {
     });
   });
 
+  it('accepts devcard(name, body)', function() {
+    devcard('fred', body);
+    expect(added).to.eql({
+      name: 'fred',
+      doc: null,
+      body: body,
+      options: {}
+    });
+  });
+
+  it('accepts devcard(name, doc)', function() {
+    devcard('fred', "Some docs...");
+    expect(added).to.eql({
+      name: 'fred',
+      doc: "Some docs...",
+      body: null,
+      options: {}
+    });
+  });
+
   it('accepts devcard(name, doc, body)', function() {
     devcard('name', "Some documentation...", body);
     expect(added).to.eql({
@@ -55,6 +75,27 @@ describe('devcard()', function() {
     expect(added.body).to.equal(body);
   });
 
+  it('accepts devcard.anon(doc)', function() {
+    devcard.anon("Some docs");
+    expect(added).to.eql({
+      name: null,
+      doc: "Some docs",
+      body: null,
+      options: {}
+    });
+  });
+
+  it('accepts devcard.anon(body)', function() {
+    devcard.anon(body);
+    expect(added).to.eql({
+      name: null,
+      doc: null,
+      body: body,
+      options: {}
+    });
+    expect(added.body).to.equal(body);
+  });
+
   it('accepts devcard.anon(doc, body)', function() {
     devcard.anon("Some docs", body);
     expect(added).to.eql({
@@ -62,6 +103,17 @@ describe('devcard()', function() {
       doc: "Some docs",
       body: body,
       options: {}
+    });
+    expect(added.body).to.equal(body);
+  });
+
+  it('accepts devcard.anon(body, options)', function() {
+    devcard.anon(body, { options: 'are great' });
+    expect(added).to.eql({
+      name: null,
+      doc: null,
+      body: body,
+      options: { options: 'are great' }
     });
     expect(added.body).to.equal(body);
   });
@@ -77,13 +129,13 @@ describe('devcard()', function() {
     expect(added.body).to.equal(body);
   });
 
-  it('ignores devcard.off(doc)', function() {
-    devcard.off("Some docs");
+  it('ignores devcard.off(body)', function() {
+    devcard.off(body);
     expect(added).to.eql(null);
   });
 
-  it('ignores devcard.off(body)', function() {
-    devcard.off(body);
+  it('ignores devcard.off(name, doc)', function() {
+    devcard.off('fred', "Some docs...");
     expect(added).to.eql(null);
   });
 
