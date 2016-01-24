@@ -33,6 +33,14 @@ describe('routes', function() {
       });
     });
 
+    it('accepts (namespace, card, focus)', function() {
+      expect(href('buttons', 'loading', 'focus'))
+        .to.eql('/#/buttons/loading/focus');
+      expect(route(path('buttons', 'loading', 'focus'))).to.eql({
+         namespace: 'buttons', card: 'loading', focus: true
+      });
+    });
+
     it('should handle URI components', function() {
       expect(href('Fancy buttons', 'Loading button')).to.eql(
         '/#/Fancy%20buttons/Loading%20button'
@@ -51,6 +59,11 @@ describe('routes', function() {
     });
     it('should route /abc/123 to { namespace: abc, card: 123 }', function() {
       expect(route('/abc/123')).to.eql({ namespace: 'abc', card: '123' });
+    });
+    it('should route /abc/123/focus to ' +
+       '{ namespace: abc, card: 123, focus: true }', function() {
+      expect(route('/abc/123/focus'))
+        .to.eql({ namespace: 'abc', card: '123', focus: true });
     });
     it('should route /not/a/thing to null', function() {
       expect(route('/not/a/thing')).to.eql(null);

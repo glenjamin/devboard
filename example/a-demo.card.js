@@ -3,8 +3,7 @@ import React from 'react';
 
 var devcard = devcards.ns('API Walkthrough');
 
-devcard(
-  'A devcard',
+devcard('A devcard',
   `
   A simple card comprises a name, then
   [markdown](http://commonmark.org/) documentation,
@@ -86,4 +85,31 @@ devcard(
       <span className="badge">42</span>
     </li>
   </ul>
+);
+
+devcard('Flexibility',
+  `
+  There's a lot of flexibility in this API.
+
+  Pretty much every useful combination of name, docs, body
+  and options is available.
+
+  ~~~js
+  devcard(doc)
+  devcard(body)
+  devcard(name, body)
+  devcard(name, doc)
+  devcard(name, doc, body)
+  devcard(name, doc, body, options)
+  devcard.anon(doc)
+  devcard.anon(body)
+  devcard.anon(doc, body)
+  devcard.anon(body, options)
+  devcard.anon(doc, body, options)
+  devcard.off(body)
+  devcard.off(name, doc)
+  devcard.off(name, doc, body)
+  devcard.off(name, doc, body, options)
+  ~~~
+  `
 );
