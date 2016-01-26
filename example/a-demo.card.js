@@ -132,5 +132,15 @@ devcard('Syntax Highlight',
     two: 2
   };
   ~~~
+
+  And JSX works outside of the box.
+
+  ~~~jsx
+  class Button extends Component {
+    render() {
+      return <button role="button">Click Me!</button>;
+    }
+  }
+  ~~~
   `
 );
