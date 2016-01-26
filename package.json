@@ -5,7 +5,8 @@
   "main": "devcards.js",
   "scripts": {
     "test": "mocha",
-    "lint": "eslint --max-warnings 0 ."
+    "lint": "eslint --max-warnings 0 .",
+    "generate": "./scripts/generate"
   },
   "repository": {
     "type": "git",

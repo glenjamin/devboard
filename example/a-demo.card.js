@@ -172,9 +172,15 @@ devcard('Syntax Highlighting',
   factorial 0 = 1
   factorial n = n * factorial (n - 1)
   ~~~
+  ~~~scheme
+  (defcard-rg jamming
+    [:div {:style {:border "10px solid blue" :padding "20px"}}
+      [:h1 "Composing Reagent Hiccup on the fly"]
+      [:p "adding arbitrary hiccup"]])
+  ~~~
 
   The full list of languages can be found in the [prism docs], setting a
-  language is done by setting the info string of the code fence
+  language is done via the info string of a code fence.
   ~~~~markdown
   ~~~js
   // Code goes here
