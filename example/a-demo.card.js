@@ -113,3 +113,24 @@ devcard('Flexibility',
   ~~~
   `
 );
+
+devcard('Syntax Highlight',
+  `
+  Code is obviously highlighted.
+
+  ~~~js
+  const string = 'Hello World!';
+
+  function sayHello(greeting) {
+    console.log(greeting);
+  }
+
+  sayHello(string);
+
+  const object = {
+    one: 1,
+    two: 2
+  };
+  ~~~
+  `
+);
