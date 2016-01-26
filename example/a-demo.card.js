@@ -142,5 +142,11 @@ devcard('Syntax Highlight',
     }
   }
   ~~~
+
+  And this is code not highlighted but escaped nonetheless.
+
+  ~~~
+  <button role="button">Click Me!</button>
+  ~~~
   `
 );
