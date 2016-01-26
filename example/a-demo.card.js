@@ -5,12 +5,28 @@ var devcard = devcards.ns('API Walkthrough');
 
 devcard('A devcard',
   `
-  A simple card comprises a name, then
-  [markdown](http://commonmark.org/) documentation,
-  followed by a body.
-  ~~~js
+  A simple card comprises a name, then markdown documentation
+  via [commonmark](http://commonmark.org/), followed by a body.
+  ~~~~jsx
   devcard(name, doc, body);
-  ~~~
+
+  // for example...
+  devcard('A devcard',
+    \`
+    A simple card comprises a name, then markdown documentation
+    via [commonmark](http://commonmark.org/), followed by a body.
+    ~~~js
+    devcard(name, doc, body);
+    ~~~
+    \`,
+    <div className="alert alert-info">
+      <p>
+        A body can be <big><strong>all</strong></big> kinds of things,
+        this one is made of React elements.
+      </p>
+    </div>
+  );
+  ~~~~
   `,
   <div className="alert alert-info">
     <p>
@@ -111,5 +127,66 @@ devcard('Flexibility',
   devcard.off(name, doc, body)
   devcard.off(name, doc, body, options)
   ~~~
+  `
+);
+
+devcard('Syntax Highlighting',
+  `
+  As you may have noticed, the markdown code blocks are syntax highlighted.
+
+  The highlighting is provided by [PrismJS](http://prismjs.com/).
+
+  You can see it in action here on some meaty JavaScript.
+  ~~~js
+  const string = 'Hello World!';
+  function sayHello(greeting) {
+    console.log(greeting);
+  }
+  sayHello(string);
+  var object = { one: 1, two: 2 };
+  ~~~
+
+  It can also handle JSX
+  ~~~jsx
+  class Button extends Component {
+    render() {
+      return <button role="button">Click Me!</button>;
+    }
+  }
+  ~~~
+
+  And many other common (and uncommmon) languages
+  ~~~apacheconf
+  RewriteCond %{HTTP_HOST} !^$
+  RewriteCond %{HTTP_HOST} !^subdomain\.domain\.tld$ [NC]
+  RewriteRule ^/(.*)$ http://subdomain.domain.tld/$1 [L,R=301]
+  ~~~
+  ~~~erlang
+  P = {adam,24,{july,29}}.
+  M1 = #{name=>adam,age=>24,date=>{july,29}}.
+  M2 = maps:update(age,25,M1).
+  io:format("{~p,~p}: ~p~n", [?MODULE,?LINE,X]).
+  ~~~
+  ~~~haskell
+  factorial :: (Eq a, Num a) => a -> a
+  factorial 0 = 1
+  factorial n = n * factorial (n - 1)
+  ~~~
+  ~~~scheme
+  (defcard-rg jamming
+    [:div {:style {:border "10px solid blue" :padding "20px"}}
+      [:h1 "Composing Reagent Hiccup on the fly"]
+      [:p "adding arbitrary hiccup"]])
+  ~~~
+
+  The full list of languages can be found in the [prism docs], setting a
+  language is done via the info string of a code fence.
+  ~~~~markdown
+  ~~~js
+  // Code goes here
+  ~~~
+  ~~~~
+
+  [prism docs]: http://prismjs.com/#languages-list
   `
 );
