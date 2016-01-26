@@ -19,7 +19,8 @@
   "homepage": "https://github.com/glenjamin/devcards-js#readme",
   "dependencies": {
     "commonmark": "^0.24.0",
-    "commonmark-react-renderer": "^2.2.2",
+    "commonmark-react-renderer": "git+https://github.com/Yomguithereal/commonmark-react-renderer.git#b83e35d5dc11a7b17258db426dfb956edeb0df4e",
+    "highlight.js": "^9.1.0",
     "history": "^1.17.0",
     "i40": "^1.3.1",
     "object-assign": "^4.0.1"

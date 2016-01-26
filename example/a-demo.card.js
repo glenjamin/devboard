@@ -113,3 +113,40 @@ devcard('Flexibility',
   ~~~
   `
 );
+
+devcard('Syntax Highlight',
+  `
+  Code is obviously highlighted.
+
+  ~~~js
+  const string = 'Hello World!';
+
+  function sayHello(greeting) {
+    console.log(greeting);
+  }
+
+  sayHello(string);
+
+  const object = {
+    one: 1,
+    two: 2
+  };
+  ~~~
+
+  And JSX works outside of the box.
+
+  ~~~jsx
+  class Button extends Component {
+    render() {
+      return <button role="button">Click Me!</button>;
+    }
+  }
+  ~~~
+
+  And this is code not highlighted but escaped nonetheless.
+
+  ~~~
+  <button role="button">Click Me!</button>
+  ~~~
+  `
+);
