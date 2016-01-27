@@ -7,6 +7,7 @@ devcard('A devcard',
   `
   A simple card comprises a name, then markdown documentation
   via [commonmark](http://commonmark.org/), followed by a body.
+
   ~~~~jsx
   devcard(name, doc, body);
 
@@ -15,6 +16,7 @@ devcard('A devcard',
     \`
     A simple card comprises a name, then markdown documentation
     via [commonmark](http://commonmark.org/), followed by a body.
+
     ~~~js
     devcard(name, doc, body);
     ~~~
