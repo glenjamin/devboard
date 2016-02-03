@@ -40,8 +40,8 @@ devcard('object',
 devcard('RegExp',
   `Regular expressions also get displayed neatly.
 
-  At some point I'd like to automatically make these interactive`,
-  /^[de]{2}v(ca|rd){2}s/
+  If you type into the box, you can test what it matches.`,
+  /^([de]{2}v)(ca|rd){2}s/
 );
 
 devcard('Date',
