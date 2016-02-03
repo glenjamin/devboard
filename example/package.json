@@ -4,7 +4,7 @@
   "description": "Example for devcards",
   "private": true,
   "scripts": {
-    "start": "kotatsu serve --public public/ --index public/index.html --progress --devtool \\#source-map --babel main.js",
+    "start": "kotatsu serve --public public/ --index public/index.html --progress --devtool \\#cheap-source-map --babel main.js",
     "lint": "eslint --max-warnings 0 ."
   },
   "author": "Glen Mailer <glen@stainlessed.co.uk>",
