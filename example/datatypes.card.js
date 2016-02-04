@@ -72,6 +72,11 @@ var ListToggle = React.createClass({
   }
 });
 
+devcard('Set',
+  `ES2015 Set can also be displayed`,
+  new Set([1, 2, 3])
+);
+
 devcard('React',
   `Any ReactElement is rendered into the card`,
   <ListToggle />
