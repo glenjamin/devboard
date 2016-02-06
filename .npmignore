@@ -1,5 +1,5 @@
 .gitignore
 .npmignore
-test
 *.log
-src
+/example
+/scripts
