@@ -27,6 +27,20 @@ devcard('number',
   42
 );
 
+devcard('function',
+  `Functions get called, and their result rendered
+
+  > TODO: functions can also have state
+  `,
+  function() {
+    return `
+~~~js
+function() { return 'an example'; }
+~~~
+    `;
+  }
+);
+
 devcard('Array',
   `Arrays get displayed neatly with some colour`,
   [ 5, 6, 7, 8 ]
@@ -48,6 +62,20 @@ devcard('Date',
   `Javascript date objects get converted to a readable form`,
   new Date()
 );
+
+if (typeof Set === 'function') {
+  devcard('ES6 Set',
+    `ES6 Sets get displayed neatly with some colour`,
+    new Set([5, 7, 11, 13, 17])
+  );
+}
+
+if (typeof Map === 'function') {
+  devcard('ES6 Map',
+    `ES6 Maps get displayed neatly with some colour`,
+    new Map([['a', 1], ['b', 2], [3, 'c']])
+  );
+}
 
 var ListToggle = React.createClass({
   getInitialState() { return { current: 'Cuddly Toy' }; },

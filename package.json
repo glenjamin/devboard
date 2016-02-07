@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/glenjamin/devcards-js#readme",
   "dependencies": {
+    "@glenjamin/inspect-x": "^1.0.0",
     "commonmark": "^0.24.0",
     "commonmark-react-renderer": "^2.2.2",
     "history": "^1.17.0",
