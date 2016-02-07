@@ -41,16 +41,6 @@ function() { return 'an example'; }
   }
 );
 
-devcard('Array',
-  `Arrays get displayed neatly with some colour`,
-  [ 5, 6, 7, 8 ]
-);
-
-devcard('object',
-  `Ordinary JS objects also get displayed neatly with some colour`,
-  { a: 1, b: 2, c: 3 }
-);
-
 devcard('RegExp',
   `Regular expressions also get displayed neatly.
 
@@ -61,6 +51,25 @@ devcard('RegExp',
 devcard('Date',
   `Javascript date objects get converted to a readable form`,
   new Date()
+);
+
+devcard(
+  `Datatype rendering is powered by [inspect-x]. This handles most built-in
+  Javascript datatypes, as well as any custom types which implement their own
+  \`inspect()\` method.
+
+  [inspect-x]: https://github.com/Xotic750/inspect-x
+  `
+);
+
+devcard('Array',
+  `Arrays get displayed neatly with some colour`,
+  [ 5, 6, 7, 8 ]
+);
+
+devcard('object',
+  `Ordinary JS objects also get displayed neatly with some colour`,
+  { a: 1, b: 2, c: 3 }
 );
 
 if (typeof Set === 'function') {
