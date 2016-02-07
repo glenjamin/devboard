@@ -4,7 +4,7 @@
   "description": "Example for devcards",
   "private": true,
   "kotatsu": {
-    "config": "--public public/ --index public/index.html --devtool \\#cheap-source-map --babel main.js"
+    "config": "--public public/ --index public/index.html --devtool \\#cheap-source-map --babel --config webpack.config.js main.js"
   },
   "scripts": {
     "start": "kotatsu serve --progress $npm_package_kotatsu_config",

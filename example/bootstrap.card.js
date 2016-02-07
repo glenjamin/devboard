@@ -1,10 +1,13 @@
 import devcards from '../';
 import React from 'react';
 
+import { sourceLink } from './misc';
 import Button from './Button';
 import Label from './Label';
 
 var devcard = devcards.ns('Bootstrap Example');
+
+sourceLink(devcard, __dirname, __filename);
 
 devcard(
   'Labels',

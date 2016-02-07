@@ -1,7 +1,11 @@
 import devcards from '../';
 import React from 'react';
 
+import { sourceLink } from './misc';
+
 var devcard = devcards.ns('API Walkthrough');
+
+sourceLink(devcard, __dirname, __filename);
 
 devcard('A devcard',
   `

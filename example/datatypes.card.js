@@ -1,7 +1,11 @@
 import devcards from '../';
 import React from 'react';
 
+import { sourceLink } from './misc';
+
 var devcard = devcards.ns('Datatypes');
+
+sourceLink(devcard, __dirname, __filename);
 
 var mdn = 'https://developer.mozilla.org/en-US/docs/Web/Javascript';
 
