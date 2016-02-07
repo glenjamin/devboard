@@ -6,7 +6,8 @@
   "scripts": {
     "test": "mocha",
     "lint": "eslint --max-warnings 0 .",
-    "generate": "./scripts/generate"
+    "generate": "./scripts/generate",
+    "pages": "./scripts/gh-pages"
   },
   "repository": {
     "type": "git",

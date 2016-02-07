@@ -1,0 +1,20 @@
+#!/bin/bash
+
+cd `dirname $0`
+
+set -exo pipefail
+
+GIT_REMOTE=$(git config remote.origin.url)
+
+cd ../example
+npm install
+npm run static
+
+cd public
+git init
+trap "rm -rf $(pwd)/.git" EXIT
+
+git add -Av .
+git commit --allow-empty -m "Deploy to GitHub Pages"
+
+git push --force $GIT_REMOTE master:gh-pages
