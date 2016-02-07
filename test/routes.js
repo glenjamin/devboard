@@ -17,17 +17,17 @@ describe('routes', function() {
 
   describe('path & href()', function() {
     it('accepts no args', function() {
-      expect(href()).to.eql('/#/');
+      expect(href()).to.eql('#/');
       expect(route(path())).to.eql({});
     });
 
     it('accepts (namespace)', function() {
-      expect(href('buttons')).to.eql('/#/buttons');
+      expect(href('buttons')).to.eql('#/buttons');
       expect(route(path('buttons'))).to.eql({ namespace: 'buttons' });
     });
 
     it('accepts (namespace, card)', function() {
-      expect(href('buttons', 'loading')).to.eql('/#/buttons/loading');
+      expect(href('buttons', 'loading')).to.eql('#/buttons/loading');
       expect(route(path('buttons', 'loading'))).to.eql({
          namespace: 'buttons', card: 'loading'
       });
@@ -35,7 +35,7 @@ describe('routes', function() {
 
     it('accepts (namespace, card, focus)', function() {
       expect(href('buttons', 'loading', 'focus'))
-        .to.eql('/#/buttons/loading/focus');
+        .to.eql('#/buttons/loading/focus');
       expect(route(path('buttons', 'loading', 'focus'))).to.eql({
          namespace: 'buttons', card: 'loading', focus: true
       });
@@ -43,7 +43,7 @@ describe('routes', function() {
 
     it('should handle URI components', function() {
       expect(href('Fancy buttons', 'Loading button')).to.eql(
-        '/#/Fancy%20buttons/Loading%20button'
+        '#/Fancy%20buttons/Loading%20button'
       );
       expect(route(path('Fancy buttons', 'Loading button'))).to.eql({
          namespace: 'Fancy buttons', card: 'Loading button'
