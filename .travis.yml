@@ -1,12 +1,26 @@
 language: node_js
 sudo: false
 node_js:
-  - "0.12"
-  - "4.2"
-  - "node"
+- '0.12'
+- '4.3'
+- node
+before_script:
+- wget https://raw.githubusercontent.com/glenjamin/travis_wonderwall/v0.1.2/travis_wonderwall
 script:
-  - npm run lint
-  - npm test
-  - cd example; npm install
-  - cd example; npm run lint
-#after_script: "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls"
+- npm run lint
+- npm test
+- cd example
+- npm install
+- npm run lint
+- cd ..
+- |
+  openssl aes-256-cbc -K $encrypted_05f5f83a455e_key -iv $encrypted_05f5f83a455e_iv -in github_key.enc -out github_key -d
+  eval $(ssh-agent)
+  chmod 400 github_key
+  ssh-add github_key
+  ssh-add -l
+  export GIT_REMOTE=git@github.com:glenjamin/devcards-js.git
+  git config --global user.email "glen@stainlessed.co.uk"
+  git config --global user.name "Glen Mailer"
+  python travis_wonderwall version=node job=3 branch=travis <<BASH
+    npm run pages

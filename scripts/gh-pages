@@ -4,7 +4,7 @@ cd `dirname $0`
 
 set -exo pipefail
 
-GIT_REMOTE=$(git config remote.origin.url)
+GIT_REMOTE=${GIT_REMOTE-$(git config remote.origin.url)}
 
 cd ../example
 npm install

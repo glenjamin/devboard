@@ -8,7 +8,7 @@
   },
   "scripts": {
     "start": "kotatsu serve --progress $npm_package_kotatsu_config",
-    "prestatic": "rm -r public/build",
+    "prestatic": "rm -rf public/build",
     "static": "BABEL_ENV=production kotatsu build client -o public/build $npm_package_kotatsu_config",
     "lint": "eslint --max-warnings 0 ."
   },
