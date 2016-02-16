@@ -22,5 +22,5 @@ script:
   export GIT_REMOTE=git@github.com:glenjamin/devcards-js.git
   git config --global user.email "glen@stainlessed.co.uk"
   git config --global user.name "Glen Mailer"
-  python travis_wonderwall version=node job=3 branch=travis <<BASH
+  python travis_wonderwall version=node job=3 branch=master <<BASH
     npm run pages
