@@ -7,7 +7,8 @@
     "test": "mocha",
     "lint": "eslint --max-warnings 0 .",
     "generate": "./scripts/generate",
-    "pages": "./scripts/gh-pages"
+    "pages": "./scripts/gh-pages",
+    "karma": "karma start"
   },
   "repository": {
     "type": "git",
@@ -21,7 +22,7 @@
   "homepage": "https://github.com/glenjamin/devcards-js#readme",
   "dependencies": {
     "commonmark": "^0.24.0",
-    "commonmark-react-renderer": "^2.2.2",
+    "commonmark-react-renderer": "^4.0.1",
     "history": "^1.17.0",
     "i40": "^1.3.1",
     "inspect-x": "^1.0.17",
