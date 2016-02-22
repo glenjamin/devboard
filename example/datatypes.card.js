@@ -45,6 +45,69 @@ function() { return 'an example'; }
   }
 );
 
+devcard('function with state',
+  `Functions can also receive a \`card\` argument, which allows
+  them to hold some state like a React component.
+
+  * \`card.state\` - the current value of the card's state
+  * \`card.setState()\` - update the card's state.
+
+  The initial state can be passed using the \`initial\` option.
+
+  To pretty-print the current value, enable the \`inspect\` option.
+
+  ~~~jsx
+  function(card) {
+    return (
+      <div>
+        <button onClick={() => card.setState({ n: 0 })}>
+          ZERO
+        </button>
+        <button onClick={() => card.setState(s => ({ n: s.n + 1 }))}>
+          INC
+        </button>
+        <button onClick={() => card.setState(s => ({ n: s.n - 1 }))}>
+          DEC
+        </button>
+        <p>
+          The current value of <kbd>n</kbd> is <kbd>{card.state.n}</kbd>
+        </p>
+      </div>
+    );
+  },
+  {
+    initial: { n: 0 },
+    inspect: true
+  }
+  ~~~
+
+  `,
+  function(card) {
+    return (
+      <div>
+        <p>
+          <button onClick={() => card.setState({ n: 0 })}>
+            ZERO
+          </button>
+          <button onClick={() => card.setState(s => ({ n: s.n + 1 }))}>
+            INC
+          </button>
+          <button onClick={() => card.setState(s => ({ n: s.n - 1 }))}>
+            DEC
+          </button>
+        </p>
+        <p>
+          The current value of <kbd>n</kbd> is <kbd>{card.state.n}</kbd>
+        </p>
+      </div>
+    );
+  },
+  {
+    initial: { n: 0 },
+    inspect: true
+  }
+);
+
 devcard('RegExp',
   `Regular expressions also get displayed neatly.
 
