@@ -1,3 +1,5 @@
+var createAtom = require('js-atom').createAtom;
+
 var React = require('react');
 var ReactDOM = require('react-dom');
 
@@ -26,6 +28,8 @@ function ns(name) {
   }
   return devcardApi(add);
 }
+
+exports.atom = createAtom;
 
 /**
  * Rendering

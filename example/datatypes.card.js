@@ -1,4 +1,5 @@
 import devcards from '../';
+import single from 'webpack-hmr-singleton';
 import React from 'react';
 
 import { sourceLink } from './misc';
@@ -152,6 +153,55 @@ if (typeof Map === 'function') {
     new Map([['a', 1], ['b', 2], [3, 'c']])
   );
 }
+
+devcard(
+  `Devcards can also work with data which changes, it uses [js-atom]
+  as the wrapper to co-ordinate these changes.
+
+  To help make things easier the \`createAtom\` function is exposed
+  on the \`devcards\` module:
+
+  ~~~js
+  var atom = devcards.atom({ stuff: 123 });
+  ~~~
+
+  [js-atom]: https://github.com/cjohansen/js-atom
+  `
+);
+
+var atom1 = single(module, 'atom1', () => {
+  var atom = devcards.atom({ tick: 0 });
+  setInterval(
+    () => atom1.swap(a => ({ tick: a.tick + 1 })),
+    1000
+  );
+  return atom;
+});
+
+devcard('atom',
+  `[Atoms][js-atom] can be rendered directly, which will attach a subscription
+  and re-render whenever the value changes.
+
+  This is done via duck typing on the \`deref()\` and \`addWatch()\`
+  methods, so anything that looks like an atom will work.
+
+  ~~~js
+  var single = require('webpack-hmr-singleton');
+  var atom1 = single(module, 'atom1', () => {
+    var atom = devcards.atom({ tick: 0 });
+    setInterval(
+      () => atom1.swap(a => ({ tick: a.tick + 1 })),
+      1000
+    );
+    return atom;
+  });
+  devcard('atom', '... description ...', atom1);
+  ~~~
+
+  [js-atom]: https://github.com/cjohansen/js-atom
+  `,
+  atom1
+);
 
 var ListToggle = React.createClass({
   getInitialState() { return { current: 'Cuddly Toy' }; },

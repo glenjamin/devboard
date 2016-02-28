@@ -28,6 +28,7 @@
     "inspect-x": "^1.0.17",
     "is-date-object": "^1.0.1",
     "is-regexp": "^1.0.0",
+    "js-atom": "^0.4.0",
     "object-assign": "^4.0.1",
     "prism-languages": "^0.3.0",
     "prismjs": "^1.3.0"
