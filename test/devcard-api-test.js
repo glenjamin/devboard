@@ -53,6 +53,16 @@ describe('devcard()', function() {
     });
   });
 
+  it('accepts devcard(name, body, options)', function() {
+    devcard('fred', body, { an: 'option' });
+    expect(added).to.eql({
+      name: 'fred',
+      doc: null,
+      body: body,
+      options: { an: 'option' }
+    });
+  });
+
   it('accepts devcard(name, doc, body)', function() {
     devcard('name', "Some documentation...", body);
     expect(added).to.eql({
