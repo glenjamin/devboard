@@ -179,11 +179,12 @@ var atom1 = single(module, 'atom1', () => {
 });
 
 devcard('atom',
-  `[Atoms][js-atom] can be rendered directly, which will attach a subscription
-  and re-render whenever the value changes.
+  `[Atoms][js-atom] can be rendered directly, which will attach a
+  subscription and re-render whenever the value changes.
 
-  This is done via duck typing on the \`deref()\` and \`addWatch()\`
-  methods, so anything that looks like an atom will work.
+  This is done via duck typing on the \`deref()\`, \`addWatch()\` and
+  \`removeWatch()\` methods, so anything that looks like an atom
+  should work.
 
   ~~~js
   var single = require('webpack-hmr-singleton');
