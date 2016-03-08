@@ -53,7 +53,7 @@ devcard('function with state',
   * \`card.state\` - the current value of the card's state
   * \`card.setState()\` - update the card's state.
 
-  The initial state can be passed using the \`initial\` option.
+  The initial state can be passed using the \`state\` option.
 
   To pretty-print the current value, enable the \`inspect\` option.
 
@@ -77,7 +77,7 @@ devcard('function with state',
     );
   },
   {
-    initial: { n: 0 },
+    state: { n: 0 },
     inspect: true
   }
   ~~~
@@ -104,7 +104,7 @@ devcard('function with state',
     );
   },
   {
-    initial: { n: 0 },
+    state: { n: 0 },
     inspect: true
   }
 );
