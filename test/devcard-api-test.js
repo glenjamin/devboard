@@ -4,7 +4,7 @@ var expect = require('chai').expect;
 var devcardApi = require('../lib/devcard-api');
 
 describe('devcard()', function() {
-  var body = { card: body };
+  var body = { card: 'body' };
   var added;
   beforeEach(function() {
     added = null;

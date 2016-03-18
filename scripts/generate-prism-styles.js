@@ -25,4 +25,5 @@ var newLines = lines.map(function(line) {
 
 fs.writeFileSync(jsFile, newLines.join("\n"));
 
+/* eslint-disable no-console */
 console.warn("Updated %s from %s", jsFile, cssFile);
