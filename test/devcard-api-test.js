@@ -139,24 +139,46 @@ describe('devcard()', function() {
     expect(added.body).to.equal(body);
   });
 
-  it('ignores devcard.off(body)', function() {
+  it('sets devcard.off(body) to hidden', function() {
     devcard.off(body);
-    expect(added).to.eql(null);
+    expect(added).to.eql({
+      name: null,
+      doc: null,
+      body: body,
+      options: { hidden: true }
+    });
   });
 
-  it('ignores devcard.off(name, doc)', function() {
+  it('sets devcard.off(name, doc) to hidden', function() {
     devcard.off('fred', "Some docs...");
-    expect(added).to.eql(null);
+    expect(added).to.eql({
+      name: 'fred',
+      doc: "Some docs...",
+      body: null,
+      options: { hidden: true }
+    });
   });
 
-  it('ignores devcard.off(name, doc, body)', function() {
+  it('sets devcard.off(name, doc, body) to hidden', function() {
     devcard.off('name', 'some docs', body);
-    expect(added).to.eql(null);
+    expect(added).to.eql({
+      name: 'name',
+      doc: 'some docs',
+      body: body,
+      options: { hidden: true }
+    });
+    expect(added.body).to.equal(body);
   });
 
-  it('ignores devcard.off(name, doc, body, options)', function() {
+  it('sets devcard.off(name, doc, body, options) to hidden', function() {
     devcard.off('name', 'some docs', body, { an: 'option' });
-    expect(added).to.eql(null);
+    expect(added).to.eql({
+      name: 'name',
+      doc: 'some docs',
+      body: body,
+      options: { an: 'option', hidden: true }
+    });
+    expect(added.body).to.equal(body);
   });
 
 });
