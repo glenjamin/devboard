@@ -1,5 +1,6 @@
-.gitignore
-.npmignore
 *.log
 /example
 /scripts
+/.*
+/*.enc
+**/history
