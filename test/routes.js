@@ -29,7 +29,7 @@ describe('routes', function() {
     it('accepts (namespace, card)', function() {
       expect(href('buttons', 'loading')).to.eql('#/buttons/loading');
       expect(route(path('buttons', 'loading'))).to.eql({
-         namespace: 'buttons', card: 'loading'
+        namespace: 'buttons', card: 'loading'
       });
     });
 
@@ -37,7 +37,7 @@ describe('routes', function() {
       expect(href('buttons', 'loading', 'focus'))
         .to.eql('#/buttons/loading/focus');
       expect(route(path('buttons', 'loading', 'focus'))).to.eql({
-         namespace: 'buttons', card: 'loading', focus: true
+        namespace: 'buttons', card: 'loading', focus: true
       });
     });
 
@@ -46,7 +46,7 @@ describe('routes', function() {
         '#/Fancy%20buttons/Loading%20button'
       );
       expect(route(path('Fancy buttons', 'Loading button'))).to.eql({
-         namespace: 'Fancy buttons', card: 'Loading button'
+        namespace: 'Fancy buttons', card: 'Loading button'
       });
     });
   });

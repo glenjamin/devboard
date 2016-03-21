@@ -38,7 +38,7 @@
     "react-dom": "^0.14.6"
   },
   "devDependencies": {
-    "@glenjamin/eslint-config": "1.0.0",
+    "@glenjamin/eslint-config": "^1.1.0",
     "chai": "^3.4.1",
     "eslint": "2.4.0",
     "json-loader": "^0.5.4",
