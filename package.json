@@ -1,6 +1,6 @@
 {
   "name": "devcards",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "An interactive visual REPL, based on the ClojureScript project of the same name",
   "main": "devcards.js",
   "scripts": {
