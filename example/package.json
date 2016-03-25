@@ -1,7 +1,7 @@
 {
-  "name": "devcards-js-example",
+  "name": "devboard-example",
   "version": "1.0.0",
-  "description": "Example for devcards",
+  "description": "Example for Devboard",
   "private": true,
   "kotatsu": {
     "config": "--public public/ --index public/index.html --devtool \\#cheap-source-map --babel --config webpack.config.js main.js"

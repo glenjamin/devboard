@@ -19,7 +19,7 @@ script:
   chmod 400 github_key
   ssh-add github_key
   ssh-add -l
-  export GIT_REMOTE=git@github.com:glenjamin/devcards-js.git
+  export GIT_REMOTE=git@github.com:glenjamin/devboard.git
   git config --global user.email "glen@stainlessed.co.uk"
   git config --global user.name "Glen Mailer"
   python travis_wonderwall version=node job=3 branch=master <<BASH

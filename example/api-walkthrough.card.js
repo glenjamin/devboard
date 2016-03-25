@@ -7,22 +7,22 @@ var devcard = devcards.ns('API Walkthrough');
 
 sourceLink(devcard, __dirname, __filename);
 
-devcard('A devcard',
+devcard('A card',
   `
   A simple card comprises a name, then markdown documentation
   via [commonmark](http://commonmark.org/), followed by a body.
 
   ~~~~jsx
-  devcard(name, doc, body);
+  definecard(name, doc, body);
 
   // for example...
-  devcard('A devcard',
+  definecard('A card',
     \`
     A simple card comprises a name, then markdown documentation
     via [commonmark](http://commonmark.org/), followed by a body.
 
     ~~~js
-    devcard(name, doc, body);
+    definecard(name, doc, body);
     ~~~
     \`,
     <div className="alert alert-info">
@@ -43,6 +43,10 @@ devcard('A devcard',
       A body can be <big><strong>all</strong></big> kinds of things,
       this one is made of React elements.
     </p>
+    <p>
+      See <a href="#/Datatypes">the Datatypes page</a> for examples of
+      what kinds of things are supported.
+    </p>
   </div>
 );
 
@@ -54,7 +58,7 @@ devcard.anon(
   there's no frame.
 
   ~~~js
-  devcard.anon(doc, body)
+  definecard.anon(doc, body)
   ~~~
 
   The quote below is the body of this card.
@@ -68,7 +72,7 @@ devcard.anon(
   you can pass an option to turn it on.
 
   ~~~js
-  devcard.anon(doc, body, { frame: true })
+  definecard.anon(doc, body, { frame: true })
   ~~~
   `,
   <blockquote>I feel safer with a fence up!</blockquote>,
@@ -82,11 +86,11 @@ devcard(
   This card doesn't even have a body!
 
   ~~~js
-  devcard(doc)
+  definecard(doc)
   ~~~
 
   When there's only one argument, you don't need to use
-  \`devcard.anon\`. We'll figure it out.
+  \`definecard.anon\`. We'll figure it out.
   `
 );
 
@@ -95,7 +99,7 @@ devcard(
   You can also have a card which is only a body
 
   ~~~js
-  devcard(body)
+  definecard(body)
   ~~~
   `
 );
@@ -121,21 +125,21 @@ devcard('Flexibility',
   and options is available.
 
   ~~~js
-  devcard(doc)
-  devcard(body)
-  devcard(name, body)
-  devcard(name, doc)
-  devcard(name, doc, body)
-  devcard(name, doc, body, options)
-  devcard.anon(doc)
-  devcard.anon(body)
-  devcard.anon(doc, body)
-  devcard.anon(body, options)
-  devcard.anon(doc, body, options)
-  devcard.off(body)
-  devcard.off(name, doc)
-  devcard.off(name, doc, body)
-  devcard.off(name, doc, body, options)
+  definecard(doc)
+  definecard(body)
+  definecard(name, body)
+  definecard(name, doc)
+  definecard(name, doc, body)
+  definecard(name, doc, body, options)
+  definecard.anon(doc)
+  definecard.anon(body)
+  definecard.anon(doc, body)
+  definecard.anon(body, options)
+  definecard.anon(doc, body, options)
+  definecard.off(body)
+  definecard.off(name, doc)
+  definecard.off(name, doc, body)
+  definecard.off(name, doc, body, options)
   ~~~
   `
 );

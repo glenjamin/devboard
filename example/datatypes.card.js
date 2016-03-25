@@ -157,14 +157,14 @@ if (typeof Map === 'function') {
 devcard('***********');
 
 devcard(
-  `Devcards can also work with data which changes, it uses [js-atom]
+  `Devboard can also work with data which changes, it uses [js-atom]
   as the wrapper to co-ordinate these changes.
 
   To help make things easier the \`createAtom\` function is exposed
-  on the \`devcards\` module:
+  on the \`devboard\` module:
 
   ~~~js
-  var atom = devcards.atom({ stuff: 123 });
+  var atom = devboard.atom({ stuff: 123 });
   ~~~
 
   [js-atom]: https://github.com/cjohansen/js-atom
@@ -191,14 +191,14 @@ devcard('atom',
   ~~~js
   var single = require('webpack-hmr-singleton');
   var atom1 = single(module, 'atom1', () => {
-    var atom = devcards.atom({ tick: 0 });
+    var atom = devboard.atom({ tick: 0 });
     setInterval(
       () => atom1.swap(a => ({ tick: a.tick + 1 })),
       1000
     );
     return atom;
   });
-  devcard('atom', '... description ...', atom1);
+  definecard('atom', '... description ...', atom1);
   ~~~
 
   [js-atom]: https://github.com/cjohansen/js-atom
@@ -216,16 +216,16 @@ devcard('sharing atoms',
 
   ~~~jsx
   var single = require('webpack-hmr-singleton');
-  var sharedAtom = single(module, 'sharedAtom', () => devcards.atom(0));
+  var sharedAtom = single(module, 'sharedAtom', () => devboard.atom(0));
 
-  devcard('shared-atom', sharedAtom);
-  devcard('shared-atom-render', ({ state }) => (
+  definecard('shared-atom', sharedAtom);
+  definecard('shared-atom-render', ({ state }) => (
     <h1>Value: {state.deref()}</h1>
   ), { state: sharedAtom, inspect: true });
-  devcard('shared-atom-inc', ({ state }) => (
+  definecard('shared-atom-inc', ({ state }) => (
     <button onClick={() => state.swap(n => n + 1)}>INC</button>
   ), { state: sharedAtom });
-  devcard('shared-atom-dec', ({ state }) => (
+  definecard('shared-atom-dec', ({ state }) => (
     <button onClick={() => state.swap(n => n - 1)}>DEC</button>
   ), { state: sharedAtom });
   ~~~

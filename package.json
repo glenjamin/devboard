@@ -1,8 +1,8 @@
 {
-  "name": "devcards",
+  "name": "devboard",
   "version": "0.2.0",
   "description": "An interactive visual feedback tool for developing user interface code",
-  "main": "devcards.js",
+  "main": "devboard.js",
   "scripts": {
     "test": "mocha",
     "lint": "eslint --max-warnings 0 .",
@@ -12,14 +12,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/glenjamin/devcards-js.git"
+    "url": "git+https://github.com/glenjamin/devboard.git"
   },
   "author": "Glen Mailer <glen@stainlessed.co.uk>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/glenjamin/devcards-js/issues"
+    "url": "https://github.com/glenjamin/devboard/issues"
   },
-  "homepage": "https://github.com/glenjamin/devcards-js#readme",
+  "homepage": "https://github.com/glenjamin/devboard#readme",
   "dependencies": {
     "commonmark": "^0.24.0",
     "commonmark-react-renderer": "^4.0.1",

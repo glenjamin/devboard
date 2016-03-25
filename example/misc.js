@@ -1,6 +1,6 @@
 import React from 'react';
 
-var BASE_URL = 'https://github.com/glenjamin/devcards-js/tree/master/example';
+var BASE_URL = 'https://github.com/glenjamin/devboard/tree/master/example';
 
 export function sourceLink(devcard, dir, file) {
   devcard(
