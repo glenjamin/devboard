@@ -4,7 +4,7 @@ Devcards aims to provide an interactive visual feedback tool for developing user
 
 Devcards builds on top of hot reloading tooling to provide a framework-like API for displaying and running small portions of your application at a time.
 
-[![npm version](https://img.shields.io/npm/v/devcards.svg)](https://www.npmjs.com/package/devcards) [![Build Status](https://img.shields.io/travis/glenjamin/devcards/master.svg)](https://travis-ci.org/glenjamin/devcards-js) ![MIT Licensed](https://img.shields.io/npm/l/devcards.svg)
+[![npm version](https://img.shields.io/npm/v/devcards.svg)](https://www.npmjs.com/package/devcards) [![Build Status](https://img.shields.io/travis/glenjamin/devcards-js/master.svg)](https://travis-ci.org/glenjamin/devcards-js) ![MIT Licensed](https://img.shields.io/npm/l/devcards.svg)
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
