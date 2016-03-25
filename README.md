@@ -22,7 +22,7 @@ Devcards builds on top of hot reloading tooling to provide a framework-like API 
 
 ## Say what now?
 
-The best explanation of this approach, and its benefits, comes from [Bruce Hauman][bruce] - the original creator of the ClojureScript version in [his Strange Loop talk][devcards-strangeloop].
+The best explanation of this approach, and its benefits, comes from [Bruce Hauman][bruce] - the original creator of the ClojureScript version in [his Strange Loop talk][devcards-strangeloop]. There is also a great write-up on the GitHub page for [the original devcards][devcards-cljs].
 
 The general idea is for you to define a series of **cards**, which the tooling will organise for you in a browsable way. Each card represents some small portion of your program that executes and renders some result. When used within a hot-reloading environment these cards form a working space you can use as a scratchpad to try out small portions of your code.
 
