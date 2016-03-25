@@ -30,6 +30,10 @@ devcard('A devcard',
         A body can be <big><strong>all</strong></big> kinds of things,
         this one is made of React elements.
       </p>
+      <p>
+        See <a href="#/Datatypes">the Datatypes page</a> for examples of
+        what kinds of things are supported.
+      </p>
     </div>
   );
   ~~~~
