@@ -1,15 +1,15 @@
-import devcards from '../';
+import devboard from '../';
 import React from 'react';
 
 import { sourceLink } from './misc';
 import Button from './Button';
 import Label from './Label';
 
-var devcard = devcards.ns('Bootstrap Example');
+var definecard = devboard.ns('Bootstrap Example');
 
-sourceLink(devcard, __dirname, __filename);
+sourceLink(definecard, __dirname, __filename);
 
-devcard(
+definecard(
   'Labels',
   `
   A simple display of bootstrap labels.
@@ -34,7 +34,7 @@ devcard(
   )
 );
 
-devcard(
+definecard(
   'Buttons',
   `
   A simple display of bootstrap buttons.

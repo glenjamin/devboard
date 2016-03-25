@@ -1,21 +1,21 @@
-import devcards from '../';
+import devboard from '../';
 import single from 'webpack-hmr-singleton';
 import React from 'react';
 
 import { sourceLink } from './misc';
 
-var devcard = devcards.ns('Datatypes');
+var definecard = devboard.ns('Datatypes');
 
-sourceLink(devcard, __dirname, __filename);
+sourceLink(definecard, __dirname, __filename);
 
 var mdn = 'https://developer.mozilla.org/en-US/docs/Web/Javascript';
 
-devcard(`
+definecard(`
   The body of a card can be many different things,
   here are some examples:
 `);
 
-devcard('string',
+definecard('string',
   `Strings are rendered as CommonMark`,
   `
    * [Strings](${mdn}/Reference/Global_Objects/String)
@@ -27,12 +27,12 @@ devcard('string',
   `
 );
 
-devcard('number',
+definecard('number',
   `Numbers are rendered as – unsuprisingly – *numbers*`,
   42
 );
 
-devcard('function',
+definecard('function',
   `Functions get called, and their result rendered
 
   > TODO: functions can also have state
@@ -46,7 +46,7 @@ function() { return 'an example'; }
   }
 );
 
-devcard('function with state',
+definecard('function with state',
   `Functions can also receive a \`card\` argument, which allows
   them to hold some state like a React component.
 
@@ -109,19 +109,19 @@ devcard('function with state',
   }
 );
 
-devcard('RegExp',
+definecard('RegExp',
   `Regular expressions also get displayed neatly.
 
   If you type into the box, you can test what it matches.`,
-  /^([de]{2}v)(ca|rd){2}s/
+  /^([de]{2}v)(c|bo|ard){2}s?/
 );
 
-devcard('Date',
+definecard('Date',
   `Javascript date objects get converted to a readable form`,
   new Date()
 );
 
-devcard(
+definecard(
   `Datatype rendering is powered by [inspect-x]. This handles most built-in
   Javascript datatypes, as well as any custom types which implement their own
   \`inspect()\` method.
@@ -130,33 +130,33 @@ devcard(
   `
 );
 
-devcard('Array',
+definecard('Array',
   `Arrays get displayed neatly with some colour`,
   [ 5, 6, 7, 8 ]
 );
 
-devcard('object',
+definecard('object',
   `Ordinary JS objects also get displayed neatly with some colour`,
   { a: 1, b: 2, c: 3 }
 );
 
 if (typeof Set === 'function') {
-  devcard('ES6 Set',
+  definecard('ES6 Set',
     `ES6 Sets get displayed neatly with some colour`,
     new Set([5, 7, 11, 13, 17])
   );
 }
 
 if (typeof Map === 'function') {
-  devcard('ES6 Map',
+  definecard('ES6 Map',
     `ES6 Maps get displayed neatly with some colour`,
     new Map([['a', 1], ['b', 2], [3, 'c']])
   );
 }
 
-devcard('***********');
+definecard('***********');
 
-devcard(
+definecard(
   `Devboard can also work with data which changes, it uses [js-atom]
   as the wrapper to co-ordinate these changes.
 
@@ -172,7 +172,7 @@ devcard(
 );
 
 var atom1 = single(module, 'atom1', () => {
-  var atom = devcards.atom({ tick: 0 });
+  var atom = devboard.atom({ tick: 0 });
   setInterval(
     () => atom.swap(a => ({ tick: a.tick + 1 })),
     1000
@@ -180,7 +180,7 @@ var atom1 = single(module, 'atom1', () => {
   return atom;
 });
 
-devcard('atom',
+definecard('atom',
   `[Atoms][js-atom] can be rendered directly, which will attach a
   subscription and re-render whenever the value changes.
 
@@ -206,7 +206,7 @@ devcard('atom',
   atom1
 );
 
-devcard('sharing atoms',
+definecard('sharing atoms',
   `Atoms can be shared between cards. This can be very useful to
   create an ad-hoc control panel for another card.
 
@@ -232,20 +232,20 @@ devcard('sharing atoms',
   `
 );
 
-var sharedAtom = single(module, 'sharedAtom', () => devcards.atom(0));
+var sharedAtom = single(module, 'sharedAtom', () => devboard.atom(0));
 
-devcard('shared-atom', sharedAtom);
-devcard('shared-atom-render', ({ state }) => (
+definecard('shared-atom', sharedAtom);
+definecard('shared-atom-render', ({ state }) => (
   <h1>Value: {state.deref()}</h1>
 ), { state: sharedAtom, inspect: true });
-devcard('shared-atom-inc', ({ state }) => (
+definecard('shared-atom-inc', ({ state }) => (
   <button onClick={() => state.swap(n => n + 1)}>INC</button>
 ), { state: sharedAtom });
-devcard('shared-atom-dec', ({ state }) => (
+definecard('shared-atom-dec', ({ state }) => (
   <button onClick={() => state.swap(n => n - 1)}>DEC</button>
 ), { state: sharedAtom });
 
-devcard('***********');
+definecard('***********');
 
 var ListToggle = React.createClass({
   getInitialState() { return { current: 'Cuddly Toy' }; },
@@ -270,7 +270,7 @@ var ListToggle = React.createClass({
   }
 });
 
-devcard('React',
+definecard('React',
   `Any ReactElement is rendered into the card`,
   <ListToggle />
 );

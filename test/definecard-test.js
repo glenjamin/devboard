@@ -1,20 +1,20 @@
 /* eslint-env mocha */
 var expect = require('chai').expect;
 
-var devcardApi = require('../lib/devcard-api');
+var createDefinecard = require('../lib/definecard');
 
-describe('devcard()', function() {
+describe('definecard()', function() {
   var body = { card: 'body' };
   var added;
   beforeEach(function() {
     added = null;
   });
-  var devcard = devcardApi(function(card) {
+  var definecard = createDefinecard(function(card) {
     added = card;
   });
 
-  it('accepts devcard(doc)', function() {
-    devcard("Some documentation...");
+  it('accepts definecard(doc)', function() {
+    definecard("Some documentation...");
     expect(added).to.eql({
       name: null,
       doc: "Some documentation...",
@@ -23,8 +23,8 @@ describe('devcard()', function() {
     });
   });
 
-  it('accepts devcard(body)', function() {
-    devcard(body);
+  it('accepts definecard(body)', function() {
+    definecard(body);
     expect(added).to.eql({
       name: null,
       doc: null,
@@ -33,8 +33,8 @@ describe('devcard()', function() {
     });
   });
 
-  it('accepts devcard(name, body)', function() {
-    devcard('fred', body);
+  it('accepts definecard(name, body)', function() {
+    definecard('fred', body);
     expect(added).to.eql({
       name: 'fred',
       doc: null,
@@ -43,8 +43,8 @@ describe('devcard()', function() {
     });
   });
 
-  it('accepts devcard(name, doc)', function() {
-    devcard('fred', "Some docs...");
+  it('accepts definecard(name, doc)', function() {
+    definecard('fred', "Some docs...");
     expect(added).to.eql({
       name: 'fred',
       doc: "Some docs...",
@@ -53,8 +53,8 @@ describe('devcard()', function() {
     });
   });
 
-  it('accepts devcard(name, body, options)', function() {
-    devcard('fred', body, { an: 'option' });
+  it('accepts definecard(name, body, options)', function() {
+    definecard('fred', body, { an: 'option' });
     expect(added).to.eql({
       name: 'fred',
       doc: null,
@@ -63,8 +63,8 @@ describe('devcard()', function() {
     });
   });
 
-  it('accepts devcard(name, doc, body)', function() {
-    devcard('name', "Some documentation...", body);
+  it('accepts definecard(name, doc, body)', function() {
+    definecard('name', "Some documentation...", body);
     expect(added).to.eql({
       name: 'name',
       doc: "Some documentation...",
@@ -74,8 +74,8 @@ describe('devcard()', function() {
     expect(added.body).to.equal(body);
   });
 
-  it('accepts devcard(name, doc, body, options)', function() {
-    devcard('name', "Some documentation...", body, { an: 'option' });
+  it('accepts definecard(name, doc, body, options)', function() {
+    definecard('name', "Some documentation...", body, { an: 'option' });
     expect(added).to.eql({
       name: 'name',
       doc: "Some documentation...",
@@ -85,8 +85,8 @@ describe('devcard()', function() {
     expect(added.body).to.equal(body);
   });
 
-  it('accepts devcard.anon(doc)', function() {
-    devcard.anon("Some docs");
+  it('accepts definecard.anon(doc)', function() {
+    definecard.anon("Some docs");
     expect(added).to.eql({
       name: null,
       doc: "Some docs",
@@ -95,8 +95,8 @@ describe('devcard()', function() {
     });
   });
 
-  it('accepts devcard.anon(body)', function() {
-    devcard.anon(body);
+  it('accepts definecard.anon(body)', function() {
+    definecard.anon(body);
     expect(added).to.eql({
       name: null,
       doc: null,
@@ -106,8 +106,8 @@ describe('devcard()', function() {
     expect(added.body).to.equal(body);
   });
 
-  it('accepts devcard.anon(doc, body)', function() {
-    devcard.anon("Some docs", body);
+  it('accepts definecard.anon(doc, body)', function() {
+    definecard.anon("Some docs", body);
     expect(added).to.eql({
       name: null,
       doc: "Some docs",
@@ -117,8 +117,8 @@ describe('devcard()', function() {
     expect(added.body).to.equal(body);
   });
 
-  it('accepts devcard.anon(body, options)', function() {
-    devcard.anon(body, { options: 'are great' });
+  it('accepts definecard.anon(body, options)', function() {
+    definecard.anon(body, { options: 'are great' });
     expect(added).to.eql({
       name: null,
       doc: null,
@@ -128,8 +128,8 @@ describe('devcard()', function() {
     expect(added.body).to.equal(body);
   });
 
-  it('accepts devcard.anon(doc, body, options)', function() {
-    devcard.anon("Some docs", body, { some: 'option' });
+  it('accepts definecard.anon(doc, body, options)', function() {
+    definecard.anon("Some docs", body, { some: 'option' });
     expect(added).to.eql({
       name: null,
       doc: "Some docs",
@@ -139,8 +139,8 @@ describe('devcard()', function() {
     expect(added.body).to.equal(body);
   });
 
-  it('sets devcard.off(body) to hidden', function() {
-    devcard.off(body);
+  it('sets definecard.off(body) to hidden', function() {
+    definecard.off(body);
     expect(added).to.eql({
       name: null,
       doc: null,
@@ -149,8 +149,8 @@ describe('devcard()', function() {
     });
   });
 
-  it('sets devcard.off(name, doc) to hidden', function() {
-    devcard.off('fred', "Some docs...");
+  it('sets definecard.off(name, doc) to hidden', function() {
+    definecard.off('fred', "Some docs...");
     expect(added).to.eql({
       name: 'fred',
       doc: "Some docs...",
@@ -159,8 +159,8 @@ describe('devcard()', function() {
     });
   });
 
-  it('sets devcard.off(name, doc, body) to hidden', function() {
-    devcard.off('name', 'some docs', body);
+  it('sets definecard.off(name, doc, body) to hidden', function() {
+    definecard.off('name', 'some docs', body);
     expect(added).to.eql({
       name: 'name',
       doc: 'some docs',
@@ -170,8 +170,8 @@ describe('devcard()', function() {
     expect(added.body).to.equal(body);
   });
 
-  it('sets devcard.off(name, doc, body, options) to hidden', function() {
-    devcard.off('name', 'some docs', body, { an: 'option' });
+  it('sets definecard.off(name, doc, body, options) to hidden', function() {
+    definecard.off('name', 'some docs', body, { an: 'option' });
     expect(added).to.eql({
       name: 'name',
       doc: 'some docs',

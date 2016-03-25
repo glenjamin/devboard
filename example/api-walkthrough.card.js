@@ -1,13 +1,13 @@
-import devcards from '../';
+import devboard from '../';
 import React from 'react';
 
 import { sourceLink } from './misc';
 
-var devcard = devcards.ns('API Walkthrough');
+var definecard = devboard.ns('API Walkthrough');
 
-sourceLink(devcard, __dirname, __filename);
+sourceLink(definecard, __dirname, __filename);
 
-devcard('A card',
+definecard('A card',
   `
   A simple card comprises a name, then markdown documentation
   via [commonmark](http://commonmark.org/), followed by a body.
@@ -50,7 +50,7 @@ devcard('A card',
   </div>
 );
 
-devcard.anon(
+definecard.anon(
   `
   Cards don't have to have names.
 
@@ -66,7 +66,7 @@ devcard.anon(
   <blockquote>What's in a name, anyway?</blockquote>
 );
 
-devcard.anon(
+definecard.anon(
   `
   If you don't want a name, but you do want the frame -
   you can pass an option to turn it on.
@@ -79,7 +79,7 @@ devcard.anon(
   { frame: true }
 );
 
-devcard(
+definecard(
   `
   Frameless cards are quite useful when you only want to do some docs.
 
@@ -94,7 +94,7 @@ devcard(
   `
 );
 
-devcard(
+definecard(
   `
   You can also have a card which is only a body
 
@@ -104,7 +104,7 @@ devcard(
   `
 );
 
-devcard(
+definecard(
   <ul className="list-group">
     <li className="list-group-item">This</li>
     <li className="list-group-item">card</li>
@@ -117,7 +117,7 @@ devcard(
   </ul>
 );
 
-devcard('Flexibility',
+definecard('Flexibility',
   `
   There's a lot of flexibility in this API.
 
@@ -144,7 +144,7 @@ devcard('Flexibility',
   `
 );
 
-devcard('Syntax Highlighting',
+definecard('Syntax Highlighting',
   `
   As you may have noticed, the markdown code blocks are syntax highlighted.
 

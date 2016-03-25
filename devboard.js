@@ -5,11 +5,11 @@ var ReactDOM = require('react-dom');
 
 var $ = React.createElement;
 
-var devcardApi = require('./lib/devcard-api');
+var createDefinecard = require('./lib/definecard');
 
-var DevCards = require('./lib/components/DevCards');
+var Devboard = require('./lib/components/Devboard');
 
-var DEVCARDS_DIV_ID = '__devcards-root';
+var ROOT_DIV_ID = '__definecard-root';
 
 // Singleton state
 // TODO: eliminate?
@@ -26,7 +26,7 @@ function ns(name) {
     cards.push(card);
     enqueueRender();
   }
-  return devcardApi(add);
+  return createDefinecard(add);
 }
 
 exports.atom = createAtom;
@@ -36,11 +36,11 @@ exports.atom = createAtom;
  */
 function getRoot() {
   /* eslint-env browser */
-  var root = document.getElementById(DEVCARDS_DIV_ID);
+  var root = document.getElementById(ROOT_DIV_ID);
   if (root) return root;
 
   var newRoot = document.createElement('div');
-  newRoot.id = DEVCARDS_DIV_ID;
+  newRoot.id = ROOT_DIV_ID;
   document.body.appendChild(newRoot);
   return newRoot;
 }
@@ -50,5 +50,5 @@ function enqueueRender() {
   enqueueRender.timer = requestAnimationFrame(render, 0);
 }
 function render() {
-  ReactDOM.render($(DevCards, { catalog: catalog }), getRoot());
+  ReactDOM.render($(Devboard, { catalog: catalog }), getRoot());
 }
