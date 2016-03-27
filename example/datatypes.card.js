@@ -51,7 +51,7 @@ definecard('function with state',
   them to hold some state like a React component.
 
   * \`card.state\` - the current value of the card's state
-  * \`card.setState()\` - update the card's state.
+  * \`card.setState(fn)\` - update the card's state.
 
   The initial state can be passed using the \`state\` option.
 
@@ -106,6 +106,63 @@ definecard('function with state',
   {
     state: { n: 0 },
     inspect: true
+  }
+);
+
+definecard('State and Timers',
+  `When a card has state, you can also supply options for a function that will
+  be called at set intervals which can modify the state.
+
+  This is most useful for automatically showing the transition between two
+  states of rendering. A button to disable the tick will get added into the
+  footer of the card.
+
+  * \`onTick(card)\` - a function to be called each tick, receives card with:
+    * \`card.state\` - the current value of the card's state
+    * \`card.setState(fn)\` - update the card's state.
+  * \`tickInterval\` - the time between ticks in ms, defaults to 2s.
+
+  ~~~jsx
+  function(card) {
+    return (
+      <div style={{
+        width: 100, height: 50,
+        margin: '0 auto',
+        border: '1px solid black',
+        transition: 'background-color 3s',
+        backgroundColor: ['#333', '#ccc'][card.state]
+      }} />
+    );
+  },
+  {
+    state: 0,
+    onTick: function(card) { card.setState(n => (n + 1) % 2); },
+    tickInterval: 3000
+  }
+  ~~~
+
+  `,
+  function(card) {
+    var bg = ['#333', '#ccc'][card.state];
+    return (
+      <div style={{
+        width: 100, height: 50,
+        lineHeight: '50px',
+        textAlign: 'center',
+        margin: '0 auto',
+        border: '1px solid black',
+        transition: 'background-color 3s',
+        backgroundColor: bg,
+        color: 'white'
+      }}>
+        {bg}
+      </div>
+    );
+  },
+  {
+    state: 0,
+    onTick: function(card) { card.setState(n => (n + 1) % 2); },
+    tickInterval: 3000
   }
 );
 
