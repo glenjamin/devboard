@@ -3,7 +3,7 @@ import React from 'react';
 
 import { sourceLink } from './misc';
 
-var definecard = devboard.ns('API Walkthrough');
+var definecard = devboard.ns('1. API Walkthrough');
 
 sourceLink(definecard, __dirname, __filename);
 

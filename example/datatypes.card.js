@@ -4,7 +4,7 @@ import React from 'react';
 
 import { sourceLink } from './misc';
 
-var definecard = devboard.ns('Datatypes');
+var definecard = devboard.ns('2. Datatypes');
 
 sourceLink(definecard, __dirname, __filename);
 

@@ -6,7 +6,12 @@ import ProgressBar from './ProgressBar';
 import Button from './Button';
 import Label from './Label';
 
-var definecard = devboard.ns('Bootstrap Example');
+var definecard = devboard.ns('3. Bootstrap Example');
+
+definecard(`
+This page is intended to give you an overview of what it might be like to use
+Devboard to build an interactive style guide for your component library.
+`);
 
 sourceLink(definecard, __dirname, __filename);
 
