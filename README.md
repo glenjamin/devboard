@@ -65,6 +65,7 @@ If you're already using webpack, you can extend your existing config to also cre
 If you're not already using webpack, you can still use it to create a bundle, but you might find [kotatsu](#kotatsu) easier to get going with.
 
   * Create entrypoint which includes cards
+
   ```js
   var context = require.context('./', true, /\.card\.js$/);
   context.keys().forEach(function(moduleName) {
@@ -76,13 +77,14 @@ If you're not already using webpack, you can still use it to create a bundle, bu
     * Enable hot reloading
     * Enable the JSON loader
   * Add new entrypoint into build config
-  * Create basic index.html to load new entrypoint
+  * Create basic `index.html` to load new entrypoint
 
 ### kotatsu
 
 > TODO: flesh this out more
 
   * Create entrypoint which includes cards
+
   ```js
   var context = require.context('./', true, /\.card\.js$/);
   context.keys().forEach(function(moduleName) {
