@@ -121,6 +121,7 @@ definecard('State and Timers',
     * \`card.state\` - the current value of the card's state
     * \`card.setState(fn)\` - update the card's state.
   * \`tickInterval\` - the time between ticks in ms, defaults to 2s.
+  * \`tickAutoplay\` - should the timer autoplay, defaults to true
 
   ~~~jsx
   function(card) {
@@ -137,7 +138,7 @@ definecard('State and Timers',
   {
     state: 0,
     onTick: function(card) { card.setState(n => (n + 1) % 2); },
-    tickInterval: 3000
+    tickInterval: 3000, tickAutoplay: false
   }
   ~~~
 
@@ -162,7 +163,7 @@ definecard('State and Timers',
   {
     state: 0,
     onTick: function(card) { card.setState(n => (n + 1) % 2); },
-    tickInterval: 3000
+    tickInterval: 3000, tickAutoplay: false
   }
 );
 
