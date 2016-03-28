@@ -1,21 +1,56 @@
-/* eslint-disable */
 import devboard from '../';
-import single from 'webpack-hmr-singleton';
 import React from 'react';
 import Color from 'color-js';
+import { combine } from '../lib/utils';
 
 var definecard = devboard.ns('Sheffield.JS');
 
+var logoUrl = [
+  "https://pbs.twimg.com/profile_images",
+  "/378800000571273047",
+  "/acc33eb2917943e83574de91e0ff41f8.png"
+].join('');
 definecard('intro', `
   Hello Sheffield JS!
 `,
-  <img
-    width="100" height="100"
-    src="https://pbs.twimg.com/profile_images/378800000571273047/acc33eb2917943e83574de91e0ff41f8.png"
-  />
+  <img width="100" height="100" src={logoUrl} />
 );
 
-var Thermometer = React.createClass({
+var styles = {
+  container: { width: 50 },
+  stickWrapper: { position: 'relative', height: 200 },
+  stick: {
+    position: 'absolute',
+    bottom: 0, left: 15,
+    width: 30, height: 201,
+    background: 'white',
+    borderTop: '1px solid black',
+    borderLeft: '1px solid black',
+    borderRight: '1px solid black',
+    borderTopLeftRadius: 100,
+    borderTopRightRadius: 100,
+    overflow: 'hidden'
+  },
+  mercury: { width: 28 },
+  marking: {
+    position: 'absolute',
+    fontSize: 6,
+    boxSizing: 'border-box',
+    width: 25,
+    color: '#666',
+    borderBottom: '1px solid #666',
+  },
+  bulb: {
+    marginTop: -7,
+    marginLeft: 10,
+    width: 40, height: 40,
+    borderRadius: 100,
+    border: '1px solid black'
+  },
+  label: { textAlign: 'center' }
+};
+
+var ThermometerIMadeEarlier = React.createClass({
   render() {
     var { temp } = this.props;
     temp = restrict(temp, -50, 150);
@@ -23,50 +58,28 @@ var Thermometer = React.createClass({
     var size = percentage * 2;
     var color = colourPoint('#66f', '#900', percentage * 1.5);
     return (
-      <div style={{ width: 50 }}>
-        <div style={{ position: 'relative', height: 200 }}>
-          <div style={{
-            position: 'absolute',
-            bottom: 0, left: 15,
-            width: 30, height: 202,
-            background: 'white',
-            borderTop: '1px solid black',
-            borderLeft: '1px solid black',
-            borderRight: '1px solid black',
-            borderBottom: '1px solid ' + color,
-            borderTopLeftRadius: 100,
-            borderTopRightRadius: 100,
-            overflow: 'hidden'
-          }}>
-            <div style={{
-              background: color,
-              width: 28,
-              transition: 'height 1s, margin-top 1s',
-              height: size,
-              marginTop: 200 - size,
-            }} />
+      <div style={styles.container}>
+        <div style={styles.stickWrapper}>
+          <div style={styles.stick}>
+            <div style={combine(
+              styles.mercury,
+              {
+                background: color,
+                transition: 'height 1s, margin-top 1s',
+                height: size,
+                marginTop: 200 - size,
+              })}
+            />
           </div>
           {range(-30, 140, 10).map(t => (
-            <span style={{
-              position: 'absolute',
-              fontSize: 6,
-              boxSizing: 'border-box',
-              width: 25,
-              color: '#666',
-              borderBottom: '1px solid #666',
-              top: 150 - t,
-            }}>{t}</span>
+            <span style={combine(
+              styles.marking,
+              { top: 150 - t }
+            )}>{t}</span>
           ))}
         </div>
-        <div style={{
-          marginTop: -7,
-          marginLeft: 10,
-          width: 40, height: 40,
-          background: color,
-          borderRadius: 100,
-          border: '1px solid black'
-        }} />
-        <p style={{ textAlign: 'center' }}>
+        <div style={combine(styles.bulb, { background: color })} />
+        <p style={styles.label}>
           {temp}
         </p>
       </div>
@@ -75,25 +88,25 @@ var Thermometer = React.createClass({
 });
 
 var Row = function({ children }) {
-  return <div style={{ overflow: 'hidden' }}>
+  return (<div style={{ overflow: 'hidden' }}>
     {React.Children.map(children, child => (
       <div style={{
         float: 'left', border: '1px solid #ccc', padding: 20, margin: 10
       }}>{child}</div>
     ))}
-  </div>
-}
+  </div>);
+};
 
-definecard(
+definecard.off(
   'Thermometer demo',
   `Things are hotting up!`,
   ({state}) => <div>
     <Row>
-      <Thermometer temp={-30} />
-      <Thermometer temp={50} />
-      <Thermometer temp={state.deref().ticking - 50} />
+      <ThermometerIMadeEarlier temp={-30} />
+      <ThermometerIMadeEarlier temp={50} />
+      <ThermometerIMadeEarlier temp={state.deref().ticking - 50} />
       <div>
-        <Thermometer temp={state.deref().temp} />
+        <ThermometerIMadeEarlier temp={state.deref().temp} />
         <input
           type="text" size="4" value={state.deref().temp}
           onChange={({target}) => state.swap(set('temp', target.value))} />
@@ -102,10 +115,10 @@ definecard(
   </div>,
   {
     state: devboard.atom({ temp: 0, ticking: 0 }),
-    onTick: ({state}) => state.swap(set('ticking', t => (t+5) % 200)),
+    onTick: ({state}) => state.swap(set('ticking', t => (t + 5) % 200)),
     tickInterval: 200
   }
-)
+);
 
 function restrict(n, min, max) {
   if (n < min) n = min;
