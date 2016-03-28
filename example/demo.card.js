@@ -16,7 +16,7 @@ definecard('intro', `
   <img width="100" height="100" src={logoUrl} />
 );
 
-var styles = {
+var style = {
   container: { width: 50 },
   stickWrapper: { position: 'relative', height: 200 },
   stick: {
@@ -58,11 +58,11 @@ var ThermometerIMadeEarlier = React.createClass({
     var size = percentage * 2;
     var color = colourPoint('#66f', '#900', percentage * 1.5);
     return (
-      <div style={styles.container}>
-        <div style={styles.stickWrapper}>
-          <div style={styles.stick}>
+      <div style={style.container}>
+        <div style={style.stickWrapper}>
+          <div style={style.stick}>
             <div style={combine(
-              styles.mercury,
+              style.mercury,
               {
                 background: color,
                 transition: 'height 1s, margin-top 1s',
@@ -73,13 +73,13 @@ var ThermometerIMadeEarlier = React.createClass({
           </div>
           {range(-30, 140, 10).map(t => (
             <span style={combine(
-              styles.marking,
+              style.marking,
               { top: 150 - t }
             )}>{t}</span>
           ))}
         </div>
-        <div style={combine(styles.bulb, { background: color })} />
-        <p style={styles.label}>
+        <div style={combine(style.bulb, { background: color })} />
+        <p style={style.label}>
           {temp}
         </p>
       </div>
