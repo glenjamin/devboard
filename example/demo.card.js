@@ -23,11 +23,11 @@ var Thermometer = React.createClass({
     var size = percentage * 2;
     var color = colourPoint('#66f', '#900', percentage * 1.5);
     return (
-      <div style={{ width: 40 }}>
+      <div style={{ width: 50 }}>
         <div style={{ position: 'relative', height: 200 }}>
           <div style={{
             position: 'absolute',
-            bottom: 0, left: 5,
+            bottom: 0, left: 15,
             width: 30, height: 202,
             background: 'white',
             borderTop: '1px solid black',
@@ -46,9 +46,21 @@ var Thermometer = React.createClass({
               marginTop: 200 - size,
             }} />
           </div>
+          {range(-30, 140, 10).map(t => (
+            <span style={{
+              position: 'absolute',
+              fontSize: 6,
+              boxSizing: 'border-box',
+              width: 25,
+              color: '#666',
+              borderBottom: '1px solid #666',
+              top: 150 - t,
+            }}>{t}</span>
+          ))}
         </div>
         <div style={{
           marginTop: -7,
+          marginLeft: 10,
           width: 40, height: 40,
           background: color,
           borderRadius: 100,
@@ -114,4 +126,10 @@ function set(key, val) {
     {}, obj,
     { [key]: (typeof val === 'function') ? val(obj[key]) : val }
   );
+}
+
+function range(start, end, step) {
+  var arr = [];
+  for (var i = start; i <= end; i += step) arr.push(i);
+  return arr;
 }
