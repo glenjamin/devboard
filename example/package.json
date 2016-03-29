@@ -24,6 +24,7 @@
     "eslint-plugin-no-class": "^0.1.0",
     "eslint-plugin-react": "^3.15.0",
     "kotatsu": "^0.9.1",
+    "raw-loader": "^0.5.1",
     "react": "^0.14.6",
     "react-dom": "^0.14.6",
     "webpack-hmr-singleton": "^1.0.0"

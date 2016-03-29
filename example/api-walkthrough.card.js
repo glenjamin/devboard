@@ -98,12 +98,13 @@ definecard(
   `
   You can also have a card which is only a body
 
-  ~~~js
-  definecard(body)
+  ~~~jsx
+${require('!!raw!./source-loader?token=body-only-card&indent=2!' + __filename)}
   ~~~
   `
 );
 
+// body-only-card
 definecard(
   <ul className="list-group">
     <li className="list-group-item">This</li>
@@ -116,6 +117,7 @@ definecard(
     </li>
   </ul>
 );
+// body-only-card
 
 definecard('Flexibility',
   `
