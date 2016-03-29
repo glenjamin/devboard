@@ -31,7 +31,7 @@ definecard('A card',
         this one is made of React elements.
       </p>
       <p>
-        See <a href="#/Datatypes">the Datatypes page</a> for examples of
+        See <a href="#/2. Datatypes">the Datatypes page</a> for examples of
         what kinds of things are supported.
       </p>
     </div>
@@ -44,7 +44,7 @@ definecard('A card',
       this one is made of React elements.
     </p>
     <p>
-      See <a href="#/Datatypes">the Datatypes page</a> for examples of
+      See <a href="#/2. Datatypes">the Datatypes page</a> for examples of
       what kinds of things are supported.
     </p>
   </div>
