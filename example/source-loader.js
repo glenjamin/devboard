@@ -15,7 +15,8 @@ module.exports = function(source) {
     this.value = "** Cannot find source end matching `" + token + "` **";
     return this.value;
   }
-  var snippet = source.substring(start.index + start[0].length, end.index);
+  var afterStartComment = start.index + start[0].length;
+  var snippet = source.substring(afterStartComment, end.index).trim();
   if (query.indent) {
     snippet = snippet.replace(/^/gm, indent(query.indent));
   }

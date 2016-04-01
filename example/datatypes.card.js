@@ -55,31 +55,10 @@ definecard('function with state',
   To pretty-print the current value, enable the \`inspect\` option.
 
   ~~~jsx
-  function(card) {
-    return (
-      <div>
-        <button onClick={() => card.setState({ n: 0 })}>
-          ZERO
-        </button>
-        <button onClick={() => card.setState(s => ({ n: s.n + 1 }))}>
-          INC
-        </button>
-        <button onClick={() => card.setState(s => ({ n: s.n - 1 }))}>
-          DEC
-        </button>
-        <p>
-          The current value of <kbd>n</kbd> is <kbd>{card.state.n}</kbd>
-        </p>
-      </div>
-    );
-  },
-  {
-    state: { n: 0 },
-    inspect: true
-  }
+  ${require('!!raw!./source-loader?token=func-state&indent=2!' + __filename)}
   ~~~
-
   `,
+  // func-state
   function(card) {
     return (
       <div>
@@ -104,6 +83,7 @@ definecard('function with state',
     state: { n: 0 },
     inspect: true
   }
+  // func-state
 );
 
 definecard('State and Timers',
@@ -121,35 +101,17 @@ definecard('State and Timers',
   * \`tickAutoplay\` - should the timer autoplay, defaults to true
 
   ~~~jsx
-  function(card) {
-    var bg = ['#333', '#ccc'][card.state];
-    return (
-      <div style={{
-        width: 100, height: 50,
-        margin: '0 auto',
-        textAlign: 'center',
-        border: '1px solid black',
-        transition: 'background-color 3s',
-        backgroundColor: bg,
-        color: 'white'
-      }}>
-        {bg}
-      </div>
-    );
-  },
-  {
-    state: 0,
-    onTick: function(card) { card.setState(n => (n + 1) % 2); },
-    tickInterval: 3000, tickAutoplay: false
-  }
+  ${require('!!raw!./source-loader?token=state-timer&indent=2!' + __filename)}
   ~~~
 
   `,
+  // state-timer
   function(card) {
     var bg = ['#333', '#ccc'][card.state];
     return (
       <div style={{
         width: 100, height: 50,
+        lineHeight: '50px',
         margin: '0 auto',
         textAlign: 'center',
         border: '1px solid black',
@@ -166,7 +128,95 @@ definecard('State and Timers',
     onTick: function(card) { card.setState(n => (n + 1) % 2); },
     tickInterval: 3000, tickAutoplay: false
   }
+  // state-timer
 );
+
+definecard('***********');
+
+var ListToggle = React.createClass({
+  getInitialState() { return { current: 'Cuddly Toy' }; },
+  render() {
+    var current = this.state.current;
+    var options = [
+      'Food Processor', 'Fondue Set', 'Cuddly Toy', 'Dinner Service'
+    ];
+    return (
+      <ul className="list-group">
+        {options.map(o =>
+          <li
+            key={o}
+            className={`list-group-item ${current == o ? 'active' : ''}`}
+            onClick={() => this.setState({ current: o })}
+          >
+            {o}
+          </li>
+        )}
+      </ul>
+    );
+  }
+});
+
+definecard('React',
+  `Any ReactElement is rendered into the card
+
+  ~~~jsx
+  <ListToggle />
+  ~~~
+  `,
+  <ListToggle />
+);
+
+definecard('DOM Elements',
+  `If you're not using React, you can still make cards with Devboard.
+
+  You can use the \`DOMNode\` wrapper for this. You pass a function, and
+  you'll be given a DOM Node you can do whatever you want to. If you pass a
+  second argument, you can use it to perform any clean up tasks.
+
+  ~~~js
+  ${require('!!raw!./source-loader?token=dom-node&indent=2!' + __filename)}
+  ~~~
+  `,
+  // dom-node
+  devboard.DOMNode(
+    function render(node) {
+      node.innerHTML = '<h1>Who needs React anyway?</h1>';
+    },
+    function cleanUp() {
+
+    }
+  )
+  // dom-node
+);
+
+definecard('DOM Elements with State',
+  `You can also combine the DOM Node helper with a function for state.
+
+  It's up to you to make sure this function is able to cleanly update from one
+  state to the next.
+
+  ~~~js
+  ${require('!!raw!./source-loader?token=dom-state&indent=2!' + __filename)}
+  ~~~
+  `,
+  // dom-state
+  function(card) {
+    return devboard.DOMNode(
+      function render(node) {
+        node.innerHTML = (
+          '<button>I can count to: ' +
+          card.state +
+          '</button>'
+        );
+        node.onclick = () => card.setState(n => n + 1);
+      }
+    );
+  },
+  { state: 0 }
+  // dom-state
+);
+
+definecard('***********');
 
 definecard('RegExp',
   `Regular expressions also get displayed neatly.
@@ -230,6 +280,7 @@ definecard(
   `
 );
 
+// make-atom
 var atom1 = single(module, 'atom1', () => {
   var atom = devboard.atom({ tick: 0 });
   setInterval(
@@ -238,6 +289,7 @@ var atom1 = single(module, 'atom1', () => {
   );
   return atom;
 });
+// make-atom
 
 definecard('atom',
   `[Atoms][js-atom] can be rendered directly, which will attach a
@@ -248,15 +300,7 @@ definecard('atom',
   should work.
 
   ~~~js
-  var single = require('webpack-hmr-singleton');
-  var atom1 = single(module, 'atom1', () => {
-    var atom = devboard.atom({ tick: 0 });
-    setInterval(
-      () => atom1.swap(a => ({ tick: a.tick + 1 })),
-      1000
-    );
-    return atom;
-  });
+  ${require('!!raw!./source-loader?token=make-atom&indent=2!' + __filename)}
   definecard('atom', '... description ...', atom1);
   ~~~
 
@@ -272,25 +316,14 @@ definecard('sharing atoms',
   When the \`state\` option is detected to be an atom, the card
   will subscribe to changes. This can also be combined with \`inspect\`
 
-
   ~~~jsx
   var single = require('webpack-hmr-singleton');
-  var sharedAtom = single(module, 'sharedAtom', () => devboard.atom(0));
-
-  definecard('shared-atom', sharedAtom);
-  definecard('shared-atom-render', ({ state }) => (
-    <h1>Value: {state.deref()}</h1>
-  ), { state: sharedAtom, inspect: true });
-  definecard('shared-atom-inc', ({ state }) => (
-    <button onClick={() => state.swap(n => n + 1)}>INC</button>
-  ), { state: sharedAtom });
-  definecard('shared-atom-dec', ({ state }) => (
-    <button onClick={() => state.swap(n => n - 1)}>DEC</button>
-  ), { state: sharedAtom });
+${require('!!raw!./source-loader?token=shared-atoms&indent=2!' + __filename)}
   ~~~
   `
 );
 
+// shared-atoms
 var sharedAtom = single(module, 'sharedAtom', () => devboard.atom(0));
 
 definecard('shared-atom', sharedAtom);
@@ -303,33 +336,4 @@ definecard('shared-atom-inc', ({ state }) => (
 definecard('shared-atom-dec', ({ state }) => (
   <button onClick={() => state.swap(n => n - 1)}>DEC</button>
 ), { state: sharedAtom });
-
-definecard('***********');
-
-var ListToggle = React.createClass({
-  getInitialState() { return { current: 'Cuddly Toy' }; },
-  render() {
-    var current = this.state.current;
-    var options = [
-      'Food Processor', 'Fondue Set', 'Cuddly Toy', 'Dinner Service'
-    ];
-    return (
-      <ul className="list-group">
-        {options.map(o =>
-          <li
-            key={o}
-            className={`list-group-item ${current == o ? 'active' : ''}`}
-            onClick={() => this.setState({ current: o })}
-          >
-            {o}
-          </li>
-        )}
-      </ul>
-    );
-  }
-});
-
-definecard('React',
-  `Any ReactElement is rendered into the card`,
-  <ListToggle />
-);
+// shared-atoms

@@ -8,6 +8,7 @@ var $ = React.createElement;
 var createDefinecard = require('./lib/definecard');
 
 var Devboard = require('./lib/components/Devboard');
+var DOMNodeBody = require('./lib/components/DOMNodeBody');
 
 var ROOT_DIV_ID = '__definecard-root';
 
@@ -30,6 +31,13 @@ function ns(name) {
 }
 
 exports.atom = createAtom;
+
+/**
+ * Wrappers for types we can't infer
+ */
+exports.DOMNode = function DOMNode(fn) {
+  return $(DOMNodeBody, { func: fn });
+};
 
 /**
  * Rendering
