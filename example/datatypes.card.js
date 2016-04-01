@@ -33,10 +33,7 @@ definecard('number',
 );
 
 definecard('function',
-  `Functions get called, and their result rendered
-
-  > TODO: functions can also have state
-  `,
+  `Functions get called, and their result rendered`,
   function() {
     return `
 ~~~js
@@ -125,14 +122,19 @@ definecard('State and Timers',
 
   ~~~jsx
   function(card) {
+    var bg = ['#333', '#ccc'][card.state];
     return (
       <div style={{
         width: 100, height: 50,
         margin: '0 auto',
+        textAlign: 'center',
         border: '1px solid black',
         transition: 'background-color 3s',
-        backgroundColor: ['#333', '#ccc'][card.state]
-      }} />
+        backgroundColor: bg,
+        color: 'white'
+      }}>
+        {bg}
+      </div>
     );
   },
   {
@@ -148,9 +150,8 @@ definecard('State and Timers',
     return (
       <div style={{
         width: 100, height: 50,
-        lineHeight: '50px',
-        textAlign: 'center',
         margin: '0 auto',
+        textAlign: 'center',
         border: '1px solid black',
         transition: 'background-color 3s',
         backgroundColor: bg,
