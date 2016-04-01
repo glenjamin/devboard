@@ -5,6 +5,8 @@ import { combine } from '../lib/utils';
 
 var definecard = devboard.ns('Sheffield.JS');
 
+/* eslint-disable no-use-before-define */
+
 var logoUrl = [
   "https://pbs.twimg.com/profile_images",
   "/378800000571273047",
@@ -15,6 +17,107 @@ definecard('intro', `
 `,
   <img width="100" height="100" src={logoUrl} />
 );
+
+var Thermometer = React.createClass({
+  render() {
+    var temp = restrict(this.props.temp, -50, 150);
+    var percentage = calcPercent(temp, -50, 150);
+    var size = percentage * 2;
+    var colour = colourPoint('blue', 'red', percentage);
+    return (
+      <div style={style.container}>
+        <div style={style.stickWrapper}>
+          <div style={style.stick}>
+            <div style={combine(
+              style.mercury,
+              {
+                transition: 'margin-top 1s, height 1s',
+                marginTop: 200 - size,
+                height: size,
+                background: colour
+              }
+            )} />
+          </div>
+          {range(-30, 140, 10).map(t => (
+            <span style={combine(
+              style.marking,
+              { top: 150 - t }
+            )}>{t}</span>
+          ))}
+        </div>
+        <div style={combine(
+          style.bulb,
+          { background: colour }
+        )} />
+        <p style={style.label}>{temp}</p>
+      </div>
+    );
+  }
+});
+
+definecard('Thermometer',
+  'Things are really hotting up',
+  function(card) {
+    return (<div>
+      <Row>
+        <Thermometer temp={-10} />
+        <Thermometer temp={20} />
+        <Thermometer temp={card.state.timer - 50} />
+        <div>
+          <Thermometer temp={card.state.temp} />
+          <input
+            type="text" size="10"
+            value={card.state.temp}
+            onChange={e => card.setState({ temp: e.target.value })}
+          />
+        </div>
+      </Row>
+    </div>);
+  },
+  {
+    state: { temp: 50, timer: -30 },
+    onTick: (card) =>
+      card.setState(s =>
+        ({ timer: (s.timer + 5) % 200 })),
+    tickInterval: 200
+  }
+);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 var style = {
   container: { width: 50 },
@@ -49,6 +152,41 @@ var style = {
   },
   label: { textAlign: 'center' }
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 var ThermometerIMadeEarlier = React.createClass({
   render() {
@@ -97,7 +235,7 @@ var Row = function({ children }) {
   </div>);
 };
 
-definecard.off(
+definecard(
   'Thermometer demo',
   `Things are hotting up!`,
   ({state}) => <div>
