@@ -44,7 +44,7 @@ With Devboard, you'd create a few cards to display your component in different s
 
 ## Installation & Setup
 
-For a more guided introduction that makes some tooling choices for you, see the [Quick Start Guide](#) (this doesn't exist yet).
+I'm planning to write a more guided tutorial-style quick-start guide, but for now you'll have to make do with the guidance in this README.
 
 Firstly you'll need Devboard itself.
 
@@ -117,10 +117,10 @@ Now that we have a definecard function, we can begin defining cards.
 
 A card is made up of one or more of:
 
-  * A name
-  * Markdown documentation
-  * A body
-  * Some options
+  * `name` **string** - A name
+  * `doc` **string** - Markdown documentation
+  * `body` **anything** - What to render in the card
+  * `options` **object** - Some options, see below
 
 To define a card, call the function with some combination of these, the list below shows the combinations that are possible.
 
@@ -136,11 +136,22 @@ definecard.anon(body)
 definecard.anon(doc, body)
 definecard.anon(body, options)
 definecard.anon(doc, body, options)
+defincard.off(...)
 ```
 
 Hopefully when you start using it, these combinations should begin to feel natural.
 
 See the example site for [a walkthrough](http://glenjamin.github.io/devboard/#/API Walkthrough/) of what you can do with cards.
+
+##### Available options
+
+  * `frame` **boolean** - show a border around the card, defaults to `true` if named
+  * `state` **anything** - some initial state for the card
+  * `inspect` **boolean** - show the state in the card footer, defaults to `false`
+  * `hidden` **boolean** - hide the card, same as using `defincard.off`
+  * `onTick(card)` **function** - will be called on every tick if set
+  * `tickInterval` **number** - how often to tick in ms, defaults to `2000`
+  * `tickAutoplay` **boolean** - start ticking automatically, defaults to `true`
 
 #### Card bodies
 
@@ -150,7 +161,40 @@ The example site has a [datatypes](http://glenjamin.github.io/devboard/#/Datatyp
 
 ## API Docs
 
-> TODO: See http://glenjamin.github.io/devboard/ for now
+##### devboard.ns(name) => definecard
+
+* `name` **string**
+
+See [Creating namespaces](#creating-namespaces)
+
+##### devboard.atom() => js-atom
+
+A convenience re-export of the [createAtom](https://github.com/cjohansen/js-atom#createatomval-options) function from the [js-atom](https://github.com/cjohansen/js-atom) project.
+
+##### devboard.DOMNode(render, cleanUp) => DOMNodeBody
+
+* `render(node)` **function** - called on initial mount and then every update
+* `cleanUp(node)` **function** - called when about to be removed
+
+A helper function for working with non-React systems. The `render` function is passed a DOM node which you can modify however you want. If the card state changes it will be called again. When the card is being removed, the `cleanUp` function will be called to let you tidy up.
+
+```js
+definecard('Just DOM',
+  devboard.DOMNode(function render(node) {
+    node.innerHTML = '<h1>Who needs React anyway?</h1>';
+  })
+)
+```
+
+You could then use another wrapper around this to plug in whatever templating language or component tool you're using.
+
+[See an example](http://glenjamin.github.io/devboard/#/2.%20Datatypes/DOM%20Elements)
+
+##### definecard(...)
+
+See [Creating cards](#creating-cards) for a full description of this function.
+
+See [Card bodies](#card-bodies) for a help on what can be rendered in a `body`.
 
 ## Example
 

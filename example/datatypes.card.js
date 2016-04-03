@@ -101,7 +101,7 @@ definecard('State and Timers',
   * \`tickAutoplay\` - should the timer autoplay, defaults to true
 
   ~~~jsx
-  ${require('!!raw!./source-loader?token=state-timer&indent=2!' + __filename)}
+  ${require('!!raw!./source-loader?token=state-timer!' + __filename)}
   ~~~
 
   `,
@@ -174,16 +174,17 @@ definecard('DOM Elements',
   second argument, you can use it to perform any clean up tasks.
 
   ~~~js
-  ${require('!!raw!./source-loader?token=dom-node&indent=2!' + __filename)}
+  ${require('!!raw!./source-loader?token=dom-node!' + __filename)}
   ~~~
   `,
   // dom-node
   devboard.DOMNode(
     function render(node) {
       node.innerHTML = '<h1>Who needs React anyway?</h1>';
+      console.log("Rendering", node.innerHTML);
     },
-    function cleanUp() {
-
+    function cleanUp(node) {
+      console.log("Clearing", node.innerHTML);
     }
   )
   // dom-node
@@ -196,7 +197,7 @@ definecard('DOM Elements with State',
   state to the next.
 
   ~~~js
-  ${require('!!raw!./source-loader?token=dom-state&indent=2!' + __filename)}
+  ${require('!!raw!./source-loader?token=dom-state!' + __filename)}
   ~~~
   `,
   // dom-state
@@ -300,7 +301,7 @@ definecard('atom',
   should work.
 
   ~~~js
-  ${require('!!raw!./source-loader?token=make-atom&indent=2!' + __filename)}
+  ${require('!!raw!./source-loader?token=make-atom!' + __filename)}
   definecard('atom', '... description ...', atom1);
   ~~~
 
@@ -318,7 +319,7 @@ definecard('sharing atoms',
 
   ~~~jsx
   var single = require('webpack-hmr-singleton');
-${require('!!raw!./source-loader?token=shared-atoms&indent=2!' + __filename)}
+${require('!!raw!./source-loader?token=shared-atoms!' + __filename)}
   ~~~
   `
 );

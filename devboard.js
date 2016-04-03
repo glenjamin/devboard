@@ -35,8 +35,8 @@ exports.atom = createAtom;
 /**
  * Wrappers for types we can't infer
  */
-exports.DOMNode = function DOMNode(fn) {
-  return $(DOMNodeBody, { func: fn });
+exports.DOMNode = function DOMNode(render, cleanUp) {
+  return $(DOMNodeBody, { render: render, cleanUp: cleanUp });
 };
 
 /**
@@ -55,8 +55,8 @@ function getRoot() {
 
 function enqueueRender() {
   cancelAnimationFrame(enqueueRender.timer);
-  enqueueRender.timer = requestAnimationFrame(render, 0);
+  enqueueRender.timer = requestAnimationFrame(renderRoot, 0);
 }
-function render() {
+function renderRoot() {
   ReactDOM.render($(Devboard, { catalog: catalog }), getRoot());
 }
