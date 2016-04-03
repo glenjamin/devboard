@@ -6,6 +6,7 @@
   "scripts": {
     "test": "mocha",
     "lint": "eslint --max-warnings 0 .",
+    "readme": "doctoc --maxlevel 4 README.md",
     "generate": "./scripts/generate",
     "pages": "./scripts/gh-pages",
     "karma": "karma start"
@@ -40,6 +41,7 @@
   "devDependencies": {
     "@glenjamin/eslint-config": "^1.1.0",
     "chai": "^3.4.1",
+    "doctoc": "^1.0.0",
     "eslint": "2.4.0",
     "json-loader": "^0.5.4",
     "karma": "^0.13.19",

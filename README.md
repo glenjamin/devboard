@@ -20,6 +20,7 @@ Devboard builds on top of hot reloading tooling to provide a framework-like API 
     - [Card bodies](#card-bodies)
 - [API Docs](#api-docs)
 - [Example](#example)
+- [Code of Conduct](#code-of-conduct)
 - [License](#license)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -181,7 +182,7 @@ A helper function for working with non-React systems. The `render` function is p
 ```js
 definecard('Just DOM',
   devboard.DOMNode(function render(node) {
-    node.innerHTML = '<h1>Who needs React anyway?</h1>';
+    node.innerHTML = '<p>Who needs React anyway?</p>';
   })
 )
 ```
