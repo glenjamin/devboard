@@ -1,6 +1,6 @@
 {
   "name": "devboard",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "An interactive visual feedback tool for developing user interface code",
   "main": "devboard.js",
   "scripts": {
