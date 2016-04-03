@@ -5,7 +5,7 @@ node_js:
 - '4'
 - node
 before_script:
-- wget https://raw.githubusercontent.com/glenjamin/travis_wonderwall/v0.1.2/travis_wonderwall
+- wget https://raw.githubusercontent.com/glenjamin/travis_wonderwall/v0.2.0/travis_wonderwall
 script:
 - npm run lint
 - npm test
@@ -13,6 +13,7 @@ script:
 - npm install
 - npm run lint
 - cd ..
+# Update github pages if this is the primary job
 - |
   python travis_wonderwall version=node job=3 branch=master <<BASH
     openssl aes-256-cbc -K $encrypted_05f5f83a455e_key -iv $encrypted_05f5f83a455e_iv -in github_key.enc -out github_key -d
@@ -24,3 +25,11 @@ script:
     git config --global user.email "glen@stainlessed.co.uk"
     git config --global user.name "Glen Mailer"
     npm run pages
+# Publish to npm if this is the primary job and is a tag
+- |
+  python travis_wonderwall version=node job=3 branch=master tag=yes <<BASH
+    echo $NPM_AUTH > .npmrc
+    npm publish
+env:
+  global:
+    secure: nZFpkxV3y2AYAic6KyAv/7Y7cWihVh03J5uiEOF30GT/7NbmTV4/+AgAOriOyP9ySLj44apbWeRpF4KGmyyR5flIo1gO2lA0SG/7pFY5Qc6z5fwVeaa7NbFM2BTdhHCMllsnOb8LqdRYOAR8L/gL4XLDiRiXlx3qBeO5RlgIbTAGx0ZXVTddnidTEVty4OaGZkqpKVnGqMovVI9IHWr9B3A0xmEWf2cemMeFqsc+HEala5YzaDt/vKd5sIMsSUqbN1FUINw4b670oxuPdkJctWdQzz648JWagqNmXguun03xkZ6X7dmsDFa1LZDqwuC8COSkKyKHlhD4KKejHQbe1FmBWt1+SvpKfQJRbEEzyYsXKMR57muCqGKQSpeR4dyc2FWRDq5zq03qOOoJMQP5I8nceF1fMMaFw9jEw5R3dUX9CCe4qJEkjxz5Ft8fT1sWhMcI6eydNd7FpoI5XTkzlpU59KeuU/5ZVnsxoMSldIKR9IdPTuIJ5HLdKawBuB8kG2RuUbwHce37ORu0nHy/8ZG9fsSLOVKJC/mfaPitPXbQxjQakuHkXb0l0zKPaHRrbslWPIf29R2JySeH1FpNmqZcCljSUP8MQB0CDk+eE1CaDHlZgA8CiazvG2b+oyT82/KNJeJDboiTSm3ry2CMDqS3pfd37UqH6SJOJMJFsTU=
