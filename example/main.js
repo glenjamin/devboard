@@ -3,4 +3,4 @@ context.keys().forEach(function(moduleName) {
   context(moduleName);
 });
 
-module.hot.accept();
+if (module.hot) module.hot.accept();

@@ -9,7 +9,7 @@
   "scripts": {
     "start": "kotatsu serve --progress $npm_package_kotatsu_config",
     "prestatic": "rm -rf public/build",
-    "static": "BABEL_ENV=production kotatsu build client -o public/build $npm_package_kotatsu_config",
+    "static": "NODE_ENV=production kotatsu build client -o public/build --minify $npm_package_kotatsu_config",
     "lint": "eslint --max-warnings 0 ."
   },
   "author": "Glen Mailer <glen@stainlessed.co.uk>",
