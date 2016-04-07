@@ -1,5 +1,3 @@
-var webpack = require('webpack');
-
 module.exports = {
   node: {
     // Enable dirname and filename so we can link back to the GitHub source
