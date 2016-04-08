@@ -162,15 +162,27 @@ The example site has a [datatypes](http://glenjamin.github.io/devboard/#/Datatyp
 
 ## API Docs
 
+The main entrypoint for devboard is the `ns` method.
+
 ##### devboard.ns(name) => definecard
 
 * `name` **string**
 
 See [Creating namespaces](#creating-namespaces)
 
+~~~
+
+The other methods are all helpers to make it easier to write expressive cards succinctly.
+
 ##### devboard.atom() => js-atom
 
 A convenience re-export of the [createAtom](https://github.com/cjohansen/js-atom#createatomval-options) function from the [js-atom](https://github.com/cjohansen/js-atom) project.
+
+##### devboard.Row Component
+
+A React component which renders each of its children in a box floated left with some healthy spacing between them.
+
+Useful if you have a small component and you want to render a bunch of them in a row on your card.
 
 ##### devboard.DOMNode(render, cleanUp) => DOMNodeBody
 
