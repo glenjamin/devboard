@@ -55,7 +55,7 @@ definecard('function with state',
   To pretty-print the current value, enable the \`inspect\` option.
 
   ~~~jsx
-  ${require('!!raw!./source-loader?token=func-state&indent=2!' + __filename)}
+  ${require('!!raw!./source-loader?token=func-state!' + __filename)}
   ~~~
   `,
   // func-state
@@ -134,19 +134,20 @@ definecard('State and Timers',
 definecard('***********');
 
 var ListToggle = React.createClass({
-  getInitialState() { return { current: 'Cuddly Toy' }; },
+  options: ['Food Processor', 'Fondue Set', 'Cuddly Toy', 'Dinner Service'],
+  getInitialState() {
+    var n = parseInt(this.props.default);
+    return { current: n >= 0 ? n : 2 };
+  },
   render() {
     var current = this.state.current;
-    var options = [
-      'Food Processor', 'Fondue Set', 'Cuddly Toy', 'Dinner Service'
-    ];
     return (
       <ul className="list-group">
-        {options.map(o =>
+        {this.options.map((o, i) =>
           <li
-            key={o}
-            className={`list-group-item ${current == o ? 'active' : ''}`}
-            onClick={() => this.setState({ current: o })}
+            key={i}
+            className={`list-group-item ${current == i ? 'active' : ''}`}
+            onClick={() => this.setState({ current: i })}
           >
             {o}
           </li>
@@ -164,6 +165,25 @@ definecard('React',
   ~~~
   `,
   <ListToggle />
+);
+
+definecard('React Row',
+  `You can use \`Row\` wrapper to horizontally space small components along
+  a single card. If the row is too long to fit it will wrap onto additional
+  lines
+
+  ~~~jsx
+  ${require('!!raw!./source-loader?token=react-row!' + __filename)}
+  ~~~
+  `,
+  // react-row
+  <devboard.Row>
+    <ListToggle default="1" />
+    <ListToggle default="0" />
+    <ListToggle default="3" />
+    <ListToggle default="2" />
+  </devboard.Row>
+  // react-row
 );
 
 definecard('DOM Elements',
