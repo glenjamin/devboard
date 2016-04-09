@@ -284,9 +284,7 @@ if (typeof Map === 'function') {
   );
 }
 
-definecard('***********');
-
-definecard(
+definecard('Working with atoms',
   `Devboard can also work with data which changes, it uses [js-atom]
   as the wrapper to co-ordinate these changes.
 
@@ -298,7 +296,9 @@ definecard(
   ~~~
 
   [js-atom]: https://github.com/cjohansen/js-atom
-  `
+  `,
+  null,
+  { frame: false, title: false }
 );
 
 // make-atom
