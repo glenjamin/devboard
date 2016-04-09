@@ -182,15 +182,21 @@ The other methods are all helpers to make it easier to write expressive cards su
 
 ##### devboard.atom() => js-atom
 
+[[example](http://glenjamin.github.io/devboard/#/2.%20Datatypes/Working%20with%20atoms)]
+
 A convenience re-export of the [createAtom](https://github.com/cjohansen/js-atom#createatomval-options) function from the [js-atom](https://github.com/cjohansen/js-atom) project.
 
 ##### devboard.Row Component
+
+[[example](http://glenjamin.github.io/devboard/#/2.%20Datatypes/React%20Row)]
 
 A React component which renders each of its children in a box floated left with some healthy spacing between them.
 
 Useful if you have a small component and you want to render a bunch of them in a row on your card.
 
 ##### devboard.DOMNode(render, cleanUp) => DOMNodeBody
+
+[[example](http://glenjamin.github.io/devboard/#/2.%20Datatypes/DOM%20Elements)]
 
 * `render(node)` **function** - called on initial mount and then every update
 * `cleanUp(node)` **function** - called when about to be removed
@@ -206,8 +212,6 @@ definecard('Just DOM',
 ```
 
 You could then use another wrapper around this to plug in whatever templating language or component tool you're using.
-
-[See an example](http://glenjamin.github.io/devboard/#/2.%20Datatypes/DOM%20Elements)
 
 ## Example
 
