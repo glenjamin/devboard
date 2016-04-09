@@ -170,7 +170,13 @@ The main entrypoint for devboard is the `ns` method.
 
 See [Creating namespaces](#creating-namespaces)
 
-~~~
+##### definecard(...)
+
+See [Creating cards](#creating-cards) for a full description of this function.
+
+See [Card bodies](#card-bodies) for a help on what can be rendered in a `body`.
+
+********
 
 The other methods are all helpers to make it easier to write expressive cards succinctly.
 
@@ -202,12 +208,6 @@ definecard('Just DOM',
 You could then use another wrapper around this to plug in whatever templating language or component tool you're using.
 
 [See an example](http://glenjamin.github.io/devboard/#/2.%20Datatypes/DOM%20Elements)
-
-##### definecard(...)
-
-See [Creating cards](#creating-cards) for a full description of this function.
-
-See [Card bodies](#card-bodies) for a help on what can be rendered in a `body`.
 
 ## Example
 
