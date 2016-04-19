@@ -9,7 +9,8 @@
     "readme": "doctoc --maxlevel 4 README.md",
     "generate": "./scripts/generate",
     "pages": "./scripts/gh-pages",
-    "karma": "karma start"
+    "karma": "karma start",
+    "postversion": "echo 'Did you remember to update the changelog?'"
   },
   "repository": {
     "type": "git",
