@@ -98,7 +98,7 @@ definecard(
   You can also have a card which is only a body
 
   ~~~jsx
-  ${require('!!raw!./source-loader?token=body-only!' + __filename)}
+  ${require('!!raw!part?token=body-only!' + __filename)}
   ~~~
   `
 );

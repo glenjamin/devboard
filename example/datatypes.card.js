@@ -55,7 +55,7 @@ definecard('function with state',
   To pretty-print the current value, enable the \`inspect\` option.
 
   ~~~jsx
-  ${require('!!raw!./source-loader?token=func-state!' + __filename)}
+  ${require('!!raw!part?token=func-state!' + __filename)}
   ~~~
   `,
   // func-state
@@ -101,7 +101,7 @@ definecard('State and Timers',
   * \`tickAutoplay\` - should the timer autoplay, defaults to true
 
   ~~~jsx
-  ${require('!!raw!./source-loader?token=state-timer!' + __filename)}
+  ${require('!!raw!part?token=state-timer!' + __filename)}
   ~~~
 
   `,
@@ -173,7 +173,7 @@ definecard('React Row',
   lines
 
   ~~~jsx
-  ${require('!!raw!./source-loader?token=react-row!' + __filename)}
+  ${require('!!raw!part?token=react-row!' + __filename)}
   ~~~
   `,
   // react-row
@@ -194,7 +194,7 @@ definecard('DOM Elements',
   second argument, you can use it to perform any clean up tasks.
 
   ~~~js
-  ${require('!!raw!./source-loader?token=dom-node!' + __filename)}
+  ${require('!!raw!part?token=dom-node!' + __filename)}
   ~~~
   `,
   // dom-node
@@ -217,7 +217,7 @@ definecard('DOM Elements with State',
   state to the next.
 
   ~~~js
-  ${require('!!raw!./source-loader?token=dom-state!' + __filename)}
+  ${require('!!raw!part?token=dom-state!' + __filename)}
   ~~~
   `,
   // dom-state
@@ -321,7 +321,7 @@ definecard('atom',
   should work.
 
   ~~~js
-  ${require('!!raw!./source-loader?token=make-atom!' + __filename)}
+  ${require('!!raw!part?token=make-atom!' + __filename)}
   definecard('atom', '... description ...', atom1);
   ~~~
 
@@ -339,7 +339,7 @@ definecard('sharing atoms',
 
   ~~~jsx
   var single = require('webpack-hmr-singleton');
-${require('!!raw!./source-loader?token=shared-atoms!' + __filename)}
+${require('!!raw!part?token=shared-atoms!' + __filename)}
   ~~~
   `
 );
