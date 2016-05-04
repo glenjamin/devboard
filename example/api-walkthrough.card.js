@@ -24,22 +24,14 @@ definecard('A card',
     definecard(name, doc, body);
     ~~~
     \`,
-    <div className="alert alert-info">
-      <p>
-        A body can be <big><strong>all</strong></big> kinds of things,
-        this one is made of React elements.
-      </p>
-      <p>
-        See <a href="#/2. Datatypes">the Datatypes page</a> for examples of
-        what kinds of things are supported.
-      </p>
-    </div>
+    ${require('!!raw!part?token=example1!' + __filename)}
   );
   ~~~~
   `,
+  // example1
   <div className="alert alert-info">
     <p>
-      A body can be <big><strong>all</strong></big> kinds of things,
+      A body can be <big><strong>all!!</strong></big> kinds of things,
       this one is made of React elements.
     </p>
     <p>
@@ -47,6 +39,7 @@ definecard('A card',
       what kinds of things are supported.
     </p>
   </div>
+  // example1
 );
 
 definecard.anon(
