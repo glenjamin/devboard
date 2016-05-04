@@ -4,7 +4,7 @@
   "description": "Example for Devboard",
   "private": true,
   "kotatsu": {
-    "config": "--public public/ --index public/index.html --devtool \\#cheap-source-map --babel --config webpack.config.js main.js"
+    "config": "--public public/ --index public/index.html --devtool \\#cheap-source-map --babel --config webpack.config.js"
   },
   "scripts": {
     "start": "kotatsu serve --progress $npm_package_kotatsu_config",
@@ -29,6 +29,7 @@
     "raw-loader": "^0.5.1",
     "react": "^0.14.6",
     "react-dom": "^0.14.6",
+    "react-hot-loader": "^3.0.0-beta.1",
     "webpack-hmr-singleton": "^1.0.0"
   }
 }

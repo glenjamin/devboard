@@ -1,4 +1,8 @@
 module.exports = {
+  entry: [
+    'react-hot-loader/patch',
+    './main.js',
+  ],
   node: {
     // Enable dirname and filename so we can link back to the GitHub source
     __filename: true,
