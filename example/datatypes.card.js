@@ -168,9 +168,9 @@ definecard('React',
 );
 
 definecard('React Row',
-  `You can use \`Row\` wrapper to horizontally space small components along
-  a single card. If the row is too long to fit it will wrap onto additional
-  lines
+  `You can use \`devboard.Row\` wrapper to horizontally space small components
+  along a single card. If the row is too long to fit it will wrap onto
+  additional lines
 
   ~~~jsx
   ${require('!!raw!part?token=react-row!' + __filename)}
