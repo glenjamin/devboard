@@ -46,6 +46,12 @@ exports.DOMNode = function DOMNode(render, cleanUp) {
 /**
  * Rendering
  */
+
+var customRender = false;
+exports.customRender = function(fn) {
+  customRender = fn;
+};
+
 function getRoot() {
   /* eslint-env browser */
   var root = document.getElementById(ROOT_DIV_ID);
@@ -62,5 +68,9 @@ function enqueueRender() {
   enqueueRender.timer = requestAnimationFrame(renderRoot, 0);
 }
 function renderRoot() {
-  ReactDOM.render($(Devboard, { catalog: catalog }), getRoot());
+  var element = $(Devboard, { catalog: catalog });
+  if (customRender) {
+    element = customRender(element);
+  }
+  ReactDOM.render(element, getRoot());
 }
