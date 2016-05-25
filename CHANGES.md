@@ -2,6 +2,11 @@
 
 ## Unreleased Changes
 
+## v0.6.0
+
+ * New function `devboard.customRender(fn: (el: ReactElement) => ReactElement)` which allows wrapping the root component with something custom. Created with React-hot-loader v3 in mind.
+ * Now depends on React 15.1+
+
 ## v0.5.0
 
  * Added a `title` option to cards which allows you to hide the card title.
