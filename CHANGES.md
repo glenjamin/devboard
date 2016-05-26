@@ -2,6 +2,8 @@
 
 ## Unreleased Changes
 
+ * Fix unitless CSS warning introduced in React 15
+
 ## v0.6.0
 
  * New function `devboard.customRender(fn: (el: ReactElement) => ReactElement)` which allows wrapping the root component with something custom. Created with React-hot-loader v3 in mind.
