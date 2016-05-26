@@ -2,6 +2,8 @@
 
 ## Unreleased Changes
 
+## v0.6.1
+
  * Fix unitless CSS warning introduced in React 15
 
 ## v0.6.0
