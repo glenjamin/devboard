@@ -2,6 +2,10 @@
 
 ## Unreleased Changes
 
+## v0.6.2
+
+ * Republish using Node LTS to avoid npm bug that sometimes leaves out files
+
 ## v0.6.1
 
  * Fix unitless CSS warning introduced in React 15
