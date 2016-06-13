@@ -2,6 +2,8 @@
 
 ## Unreleased Changes
 
+ * Added option to display table-of-contents on namespace pages
+
 ## v0.6.2
 
  * Republish using Node LTS to avoid npm bug that sometimes leaves out files

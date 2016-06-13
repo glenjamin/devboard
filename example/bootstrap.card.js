@@ -8,7 +8,7 @@ import ProgressBar from './ProgressBar';
 import Accordion from './Accordion';
 import Panel from './Panel';
 
-var definecard = devboard.ns('3. Bootstrap Example');
+var definecard = devboard.ns('3. Bootstrap Example', { toc: true });
 
 definecard(`
 This page is intended to give you an overview of what it might be like to use

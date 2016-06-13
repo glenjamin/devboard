@@ -18,12 +18,17 @@ var ROOT_DIV_ID = '__definecard-root';
 var catalog = {};
 
 exports.ns = ns;
-function ns(name) {
+function ns(name, options) {
+  options = options || {};
   // Because execution of a loaded module is synchronous
   // we can expect a reloading namespace to be filled
   // in a single pass of the event loop
   // therefore we can enqueue a reRender for the next tick
-  var cards = catalog[name] = [];
+  catalog[name] = {
+    cards: [],
+    options: options
+  };
+  var cards = catalog[name].cards;
   function add(card) {
     cards.push(card);
     enqueueRender();
