@@ -4,6 +4,7 @@ node_js:
 - '0.12'
 - node
 - '4'
+- '5'
 before_script:
 - wget https://raw.githubusercontent.com/glenjamin/travis_wonderwall/v0.3.0/travis_wonderwall
 script:
@@ -15,7 +16,7 @@ script:
 - cd ..
 # Update github pages if this is the primary job
 - |
-  python travis_wonderwall version=4 job=3 branch=master pr=false <<BASH
+  python travis_wonderwall version=5 job=4 branch=master pr=false <<BASH
     openssl aes-256-cbc -K $encrypted_05f5f83a455e_key -iv $encrypted_05f5f83a455e_iv -in github_key.enc -out github_key -d
     eval $(ssh-agent)
     chmod 400 github_key
@@ -27,7 +28,7 @@ script:
     npm run pages
 # Publish to npm if this is the primary job and is a tag
 - |
-  python travis_wonderwall version=4 job=3 tag=yes pr=false <<BASH
+  python travis_wonderwall version=5 job=4 tag=yes pr=false <<BASH
     echo $NPM_AUTH > .npmrc
     npm publish
 env:
