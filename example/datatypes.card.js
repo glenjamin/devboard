@@ -262,6 +262,37 @@ if (typeof Map === 'function') {
   );
 }
 
+definecard('Large object formatting',
+  `Larger objects get formatted reasonably neatly with line-breaks`,
+  {
+    a: {
+      123: 456,
+      c: {
+        d: {
+          foo: "bar"
+        }
+      }
+    },
+    b: {
+      123: 456,
+      foo: {
+        baz: [
+          1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1e10,
+          "and", "some", "other", "related", "stuff"
+        ]
+      },
+      plus: (x => typeof Map === 'function' ? new Map(x) : x)([
+        ["key", "val"],
+        ["key2", "val2"],
+        ["key3", 999],
+        ["key4", 1e7],
+        ["key5", 9 * 9 * 9],
+        ["key6", 24 * 3600],
+      ])
+    }
+  }
+);
+
 definecard('Working with atoms',
   `Devboard can also work with data which changes, it uses [js-atom]
   as the wrapper to co-ordinate these changes.
