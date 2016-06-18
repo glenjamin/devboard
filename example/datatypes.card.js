@@ -131,6 +131,46 @@ definecard('State and Timers',
   // state-timer
 );
 
+// reset-comp
+var ComponentWithSideEffects = React.createClass({
+  render() {
+    this.n = (this.n || 0) + 1;
+    return <h3>I've been rendered {this.n} times</h3>;
+  }
+});
+// reset-comp
+
+definecard('Resetting Cards',
+  `You can always reset a card by renaming it, this will force it to be
+  re-created.
+
+  You can also enable the \`resettable\` option to have a reset button
+  appear in the card footer. This can be especially useful with components
+  which have internal state or side effects.
+
+  ~~~jsx
+${require('!!raw!part?token=reset-comp&indent=2!' + __filename)}
+  ~~~
+
+  ~~~jsx
+  ${require('!!raw!part?token=resettable!' + __filename)}
+  ~~~
+  `,
+  // resettable
+  function(card) {
+    return (
+      <div>
+        <ComponentWithSideEffects />
+        <button onClick={() => card.setState(x => ({ n: x.n * 2 }))}>
+          Double State
+        </button>
+      </div>
+    );
+  },
+  { state: {n: 2}, inspect: true, resettable: true }
+  // resettable
+);
+
 definecard('***********');
 
 import ListToggle from './ListToggle';
