@@ -2,9 +2,11 @@
 
 ## Unreleased Changes
 
+## v0.7.0
+
  * Added option to display table-of-contents on namespace pages
  * Improve formatting of large objects when used as a card body
- * Add `resettable` option, which displays a button to remount the card body
+ * Add `resettable` option, to display a button that remounts the card body
 
 ## v0.6.2
 
