@@ -1,0 +1,9 @@
+<h3>Contact List</h3>
+<ul class="js-contact-list">
+    {{#contacts}}
+    <li class="js-contact-item">
+        <h4 class="js-contact-name">{{name}}</h4>
+        <p><a class="js-contact-email" href="mailto:{{email}}">{{email}}</a></p>
+    </li>
+    {{/contacts}}
+</ul>

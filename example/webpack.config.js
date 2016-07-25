@@ -12,5 +12,10 @@ module.exports = {
       'react$': require.resolve('react'),
       'react-dom$': require.resolve('react-dom'),
     }
+  },
+  module: {
+    loaders: [
+      {test: /\.tpl\.html$/, loader: "mustache"}
+    ]
   }
 };
