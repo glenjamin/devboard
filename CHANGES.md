@@ -2,6 +2,11 @@
 
 ## Unreleased Changes
 
+## v0.7.1
+
+ * Bump version of history dependency
+ * Allow use with React 0.14 via peerDependencies
+
 ## v0.7.0
 
  * Added option to display table-of-contents on namespace pages
